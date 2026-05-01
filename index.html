@@ -86,6 +86,33 @@ body{background:#1A1A1A;color:#E8E0D0;font-family:'DM Sans',sans-serif;min-heigh
 
 <script src="events.js"></script>
 <script>
+
+function flightCard(from, fromCity, to, toCity, flight, duration, departs, arrives, date, label) {
+  return `<div style="margin-top:16px;background:#1F1A10;border:1px solid #3A3020;border-radius:12px;padding:14px 16px;text-align:left">
+    <div style="font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#C8933A;margin-bottom:10px">${label}</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:24px;color:#E8E0D0">${from}</div>
+        <div style="font-size:11px;color:#9A8E7E">${fromCity}</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:11px;color:#C8933A;margin-bottom:2px">${flight}</div>
+        <div style="font-size:20px;color:#9A8E7E">✈</div>
+        <div style="font-size:10px;color:#6A5E4E">${duration}</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-family:'Playfair Display',serif;font-size:24px;color:#E8E0D0">${to}</div>
+        <div style="font-size:11px;color:#9A8E7E">${toCity}</div>
+      </div>
+    </div>
+    <div style="border-top:1px solid #3A3020;padding-top:8px;display:flex;justify-content:space-between">
+      <div style="font-size:12px;color:#9A8E7E">Departs <strong style="color:#E8E0D0">${departs}</strong></div>
+      <div style="font-size:12px;color:#9A8E7E">${date}</div>
+      <div style="font-size:12px;color:#9A8E7E">Arrives <strong style="color:#E8E0D0">${arrives}</strong></div>
+    </div>
+  </div>`;
+}
+
 function updateClock() {
   const now = getPeruTime();
   document.getElementById('clockDisplay').textContent = now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:true});
@@ -166,43 +193,89 @@ function render() {
   const tripEnd = new Date(TRIP_CONFIG.tripEnd);
   const isBirthday = todayKey === TRIP_CONFIG.birthdayDate;
 
+  // Flight phases before trip starts
+  const av263Depart = new Date('2026-04-30T23:20:00-05:00'); // ORD departs 11:20pm CDT
+  const av263Arrive = new Date('2026-05-01T05:30:00-05:00'); // BOG arrives ~5:30am
+  const av105Depart = new Date('2026-05-01T08:35:00-05:00'); // BOG departs ~8:35am
+  const av105Arrive = new Date('2026-05-01T11:20:00-05:00'); // CUZ arrives 11:20am
+
   if (now < tripStart) {
-    const diff = tripStart - now;
-    const cd = fmtCountdown(diff);
-    main.innerHTML = `<div class="pre-card">
-      <div class="pre-icon">✈️</div>
-      <div class="pre-title">Adventure starts soon!</div>
-      <div class="pre-sub" id="departSub">Departing ${TRIP_CONFIG.departureCity} · April 30</div>
-      <div class="cd-grid">
-        <div class="cd-cell"><span class="cd-num" id="cd-d">${cd.d}</span><span class="cd-unit">days</span></div>
-        <div class="cd-cell"><span class="cd-num" id="cd-h">${cd.h}</span><span class="cd-unit">hrs</span></div>
-        <div class="cd-cell"><span class="cd-num" id="cd-m">${cd.m}</span><span class="cd-unit">min</span></div>
-        <div class="cd-cell"><span class="cd-num" id="cd-s">${cd.s}</span><span class="cd-unit">sec</span></div>
-      </div>
-      <div style="margin-top:16px;background:#1F1A10;border:1px solid #3A3020;border-radius:12px;padding:14px 16px;text-align:left">
-        <div style="font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#C8933A;margin-bottom:10px">First flight</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-          <div>
-            <div style="font-family:'Playfair Display',serif;font-size:22px;color:#E8E0D0">ORD</div>
-            <div style="font-size:11px;color:#9A8E7E">Chicago O'Hare</div>
-          </div>
-          <div style="text-align:center">
-            <div style="font-size:11px;color:#C8933A;margin-bottom:3px">AV263</div>
-            <div style="font-size:18px;color:#9A8E7E">✈</div>
-            <div style="font-size:10px;color:#6A5E4E">~5h 10m</div>
-          </div>
-          <div style="text-align:right">
-            <div style="font-family:'Playfair Display',serif;font-size:22px;color:#E8E0D0">BOG</div>
-            <div style="font-size:11px;color:#9A8E7E">Bogota</div>
-          </div>
+    // Phase 1: Before AV263 departs — show countdown + first flight
+    if (now < av263Depart) {
+      const diff = av263Depart - now;
+      const cd = fmtCountdown(diff);
+      main.innerHTML = `<div class="pre-card">
+        <div class="pre-icon">✈️</div>
+        <div class="pre-title">Adventure starts soon!</div>
+        <div class="pre-sub">Departing ${TRIP_CONFIG.departureCity} · April 30</div>
+        <div class="cd-grid">
+          <div class="cd-cell"><span class="cd-num" id="cd-d">${cd.d}</span><span class="cd-unit">days</span></div>
+          <div class="cd-cell"><span class="cd-num" id="cd-h">${cd.h}</span><span class="cd-unit">hrs</span></div>
+          <div class="cd-cell"><span class="cd-num" id="cd-m">${cd.m}</span><span class="cd-unit">min</span></div>
+          <div class="cd-cell"><span class="cd-num" id="cd-s">${cd.s}</span><span class="cd-unit">sec</span></div>
         </div>
-        <div style="border-top:1px solid #3A3020;padding-top:8px;display:flex;justify-content:space-between">
-          <div style="font-size:12px;color:#9A8E7E">Departs <strong style="color:#E8E0D0">11:20 PM</strong></div>
-          <div style="font-size:12px;color:#9A8E7E">Apr 30 · Thu</div>
-          <div style="font-size:12px;color:#9A8E7E">Arrives <strong style="color:#E8E0D0">~5:30 AM</strong></div>
+        ${flightCard('ORD','Chicago O'Hare','BOG','Bogota','AV263','~5h 10m','11:20 PM','~5:30 AM','Apr 30 · Thu','Next flight')}
+      </div>`;
+      return;
+    }
+
+    // Phase 2: AV263 in the air ORD→BOG
+    if (now >= av263Depart && now < av263Arrive) {
+      const diff = av263Arrive - now;
+      const cd = fmtCountdown(diff);
+      main.innerHTML = `<div class="pre-card">
+        <div class="pre-icon">🛫</div>
+        <div class="pre-title">In the air — ORD to BOG</div>
+        <div class="pre-sub">AV263 · Landing in Bogota in ${cd.h}h ${cd.m}m</div>
+        <div class="cd-grid">
+          <div class="cd-cell"><span class="cd-num">${cd.h}</span><span class="cd-unit">hrs</span></div>
+          <div class="cd-cell"><span class="cd-num">${cd.m}</span><span class="cd-unit">min</span></div>
+          <div class="cd-cell"><span class="cd-num">${cd.s}</span><span class="cd-unit">sec</span></div>
+          <div class="cd-cell"><span class="cd-num">BOG</span><span class="cd-unit">dest</span></div>
         </div>
-      </div>
-    </div>`;
+        ${flightCard('ORD','Chicago O'Hare','BOG','Bogota','AV263','~5h 10m','11:20 PM','~5:30 AM','Apr 30 → May 1','Currently flying')}
+      </div>`;
+      return;
+    }
+
+    // Phase 3: Landed in BOG, waiting for AV105
+    if (now >= av263Arrive && now < av105Depart) {
+      const diff = av105Depart - now;
+      const cd = fmtCountdown(diff);
+      main.innerHTML = `<div class="pre-card">
+        <div class="pre-icon">🛬</div>
+        <div class="pre-title">Landed in Bogota!</div>
+        <div class="pre-sub">Next flight to Cusco departs in ${cd.h}h ${cd.m}m</div>
+        <div class="cd-grid">
+          <div class="cd-cell"><span class="cd-num">${cd.h}</span><span class="cd-unit">hrs</span></div>
+          <div class="cd-cell"><span class="cd-num">${cd.m}</span><span class="cd-unit">min</span></div>
+          <div class="cd-cell"><span class="cd-num">${cd.s}</span><span class="cd-unit">sec</span></div>
+          <div class="cd-cell"><span class="cd-num">CUZ</span><span class="cd-unit">next</span></div>
+        </div>
+        ${flightCard('BOG','Bogota','CUZ','Cusco','AV105','~3h 30m','~8:35 AM','11:20 AM','May 1 · Fri','Next flight — boarding soon')}
+      </div>`;
+      return;
+    }
+
+    // Phase 4: AV105 in the air BOG→CUZ
+    if (now >= av105Depart && now < av105Arrive) {
+      const diff = av105Arrive - now;
+      const cd = fmtCountdown(diff);
+      main.innerHTML = `<div class="pre-card">
+        <div class="pre-icon">🛫</div>
+        <div class="pre-title">In the air — BOG to Cusco!</div>
+        <div class="pre-sub">AV105 · Landing in Cusco in ${cd.h}h ${cd.m}m</div>
+        <div class="cd-grid">
+          <div class="cd-cell"><span class="cd-num">${cd.h}</span><span class="cd-unit">hrs</span></div>
+          <div class="cd-cell"><span class="cd-num">${cd.m}</span><span class="cd-unit">min</span></div>
+          <div class="cd-cell"><span class="cd-num">${cd.s}</span><span class="cd-unit">sec</span></div>
+          <div class="cd-cell"><span class="cd-num">CUZ</span><span class="cd-unit">dest</span></div>
+        </div>
+        ${flightCard('BOG','Bogota','CUZ','Cusco','AV105','~3h 30m','~8:35 AM','11:20 AM','May 1 · Fri','Currently flying — almost there!')}
+      </div>`;
+      return;
+    }
+
     return;
   }
 
@@ -223,38 +296,7 @@ function render() {
   main.innerHTML = html;
 }
 
-function updateDepartSub() {
-  const el = document.getElementById('departSub');
-  if (!el) return;
-  const now = getPeruTime();
-  const landing = new Date(TRIP_CONFIG.landingCusco);
-  const depart = new Date('2026-04-30T23:20:00');
-  const diffMs = landing - now;
-  const diffHrs = diffMs / 3600000;
-  if (now >= depart && diffHrs <= 4 && diffHrs > 0) {
-    const mins = Math.round(diffMs / 60000);
-    const hrs = Math.floor(mins/60), remMins = mins%60;
-    el.innerHTML = `✈️ Landing in Cusco in <strong style="color:#C8933A">${hrs>0?hrs+'h ':''}${remMins}m</strong>`;
-  } else {
-    el.textContent = `Departing ${TRIP_CONFIG.departureCity} · April 30`;
-  }
-}
 
-function tickCountdown() {
-  const now = getPeruTime();
-  const tripStart = new Date(TRIP_CONFIG.tripStart);
-  if (now >= tripStart) return;
-  const cd = fmtCountdown(tripStart - now);
-  const d=document.getElementById('cd-d'),h=document.getElementById('cd-h'),m=document.getElementById('cd-m'),s=document.getElementById('cd-s');
-  if(d)d.textContent=cd.d; if(h)h.textContent=cd.h; if(m)m.textContent=cd.m; if(s)s.textContent=cd.s;
-}
-
-updateClock(); render();
-setInterval(updateClock, 1000);
-setInterval(tickCountdown, 1000);
-setInterval(updateDepartSub, 30000);
-setInterval(render, 60000);
-updateDepartSub();
 </script>
 </body>
 </html>

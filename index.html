@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Peru Trip 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style id="new">
+<style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#1A1A1A;color:#E8E0D0;font-family:'DM Sans',sans-serif;min-height:100vh;display:flex;flex-direction:column}
 .header{background:linear-gradient(135deg,#1A1208 0%,#2A1F0A 50%,#1A1208 100%);border-bottom:1px solid #C8933A;padding:20px 20px 16px;text-align:center;position:relative}
@@ -214,7 +214,7 @@ function render() {
           <div class="cd-cell"><span class="cd-num" id="cd-m">${cd.m}</span><span class="cd-unit">min</span></div>
           <div class="cd-cell"><span class="cd-num" id="cd-s">${cd.s}</span><span class="cd-unit">sec</span></div>
         </div>
-        ${flightCard('ORD','Chicago O'Hare','BOG','Bogota','AV263','~5h 10m','11:20 PM','~5:30 AM','Apr 30 · Thu','Next flight')}
+        ${flightCard('ORD','Chicago O\'Hare','BOG','Bogota','AV263','~5h 10m','11:20 PM','~5:30 AM','Apr 30 · Thu','Next flight')}
       </div>`;
       return;
     }
@@ -233,7 +233,7 @@ function render() {
           <div class="cd-cell"><span class="cd-num">${cd.s}</span><span class="cd-unit">sec</span></div>
           <div class="cd-cell"><span class="cd-num">BOG</span><span class="cd-unit">dest</span></div>
         </div>
-        ${flightCard('ORD','Chicago O'Hare','BOG','Bogota','AV263','~5h 10m','11:20 PM','~5:30 AM','Apr 30 → May 1','Currently flying')}
+        ${flightCard('ORD','Chicago O\'Hare','BOG','Bogota','AV263','~5h 10m','11:20 PM','~5:30 AM','Apr 30 → May 1','Currently flying')}
       </div>`;
       return;
     }

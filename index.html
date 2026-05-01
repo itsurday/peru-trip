@@ -285,11 +285,11 @@ const TRIP_EVENTS = {
 };
 
 const TRIP_CONFIG = {
-  tripStart: '2026-05-01T11:20:00',
-  tripEnd:   '2026-05-07T00:00:00',
+  tripStart: '2026-05-01T11:20:00-05:00',
+  tripEnd:   '2026-05-07T00:00:00-05:00',
   birthdayDate: '2026-05-03',
   departureDate: '2026-04-30',
-  landingCusco: '2026-05-01T11:20:00',
+  landingCusco: '2026-05-01T11:20:00-05:00',
   departureCity: "O'Hare (ORD)",
   timezone: 'America/Lima',
 };
@@ -546,6 +546,8 @@ function render() {
       return;
     }
 
+    // Fallback — should never hit this but just in case
+    main.innerHTML = '<div class="pre-card"><div class="pre-icon">✈️</div><div class="pre-title">On your way!</div><div class="pre-sub">Trip begins May 1 in Cusco</div></div>';
     return;
   }
 

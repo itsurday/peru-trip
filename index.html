@@ -72,6 +72,44 @@ body{background:#1A1A1A;color:#E8E0D0;font-family:"DM Sans",sans-serif;min-heigh
 .fact-item.revealed .fact-num{background:#C8933A;color:#1A1208}
 .fact-item.revealed .fact-text{color:#E8E0D0}
 .reveal-hint{font-size:11px;color:#6A5E4E;text-align:center;margin-top:10px;font-style:italic}
+
+.picker-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(10,8,4,.97);z-index:9999;overflow-y:auto;padding:24px 20px 40px}
+.picker-inner{max-width:480px;margin:0 auto}
+.picker-title{font-family:"Playfair Display",serif;font-size:22px;color:#C8933A;text-align:center;margin-bottom:4px}
+.picker-sub{font-size:13px;color:#9A8E7E;text-align:center;margin-bottom:20px;line-height:1.6}
+.rest-card{background:#2A2A2A;border:1px solid #3A3020;border-radius:16px;padding:16px 18px;margin-bottom:12px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.rest-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#C8933A,#F5C86A,#C8933A);opacity:0;transition:opacity .2s}
+.rest-card:hover{border-color:#C8933A;transform:translateY(-2px)}
+.rest-card:hover::before{opacity:1}
+.rest-card.selected{border-color:#C8933A;background:#1F1A10}
+.rest-card.selected::before{opacity:1}
+.rest-rank{font-size:20px;margin-bottom:6px}
+.rest-name{font-family:"Playfair Display",serif;font-size:18px;color:#E8E0D0;margin-bottom:4px}
+.rest-tagline{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#C8933A;margin-bottom:8px}
+.rest-desc{font-size:13px;color:#9A8E7E;line-height:1.6;margin-bottom:10px}
+.rest-meta{display:flex;gap:12px;flex-wrap:wrap}
+.rest-pill{font-size:11px;background:#1A1208;border:1px solid #3A3020;border-radius:99px;padding:3px 10px;color:#9A8E7E}
+.rest-pill.price{color:#C8933A;border-color:#C8933A}
+.rest-must{font-size:12px;color:#6A5A40;margin-top:8px;padding-top:8px;border-top:1px solid #3A3020}
+.rest-must strong{color:#C8933A}
+.picker-confirm{display:none;position:sticky;bottom:0;padding:16px 0 0;background:linear-gradient(transparent,rgba(10,8,4,.97) 40%)}
+.picker-confirm.show{display:block}
+.confirm-btn{width:100%;background:linear-gradient(135deg,#C8933A,#F5C86A);border:none;border-radius:14px;color:#1A1208;font-family:"Playfair Display",serif;font-size:17px;padding:14px;cursor:pointer;font-weight:500;letter-spacing:.02em}
+.confirm-btn:active{opacity:.9;transform:scale(.98)}
+.selected-check{position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;background:#C8933A;color:#1A1208;font-size:13px;display:none;align-items:center;justify-content:center;font-weight:700}
+.rest-card.selected .selected-check{display:flex}
+
+.dinner-card{background:linear-gradient(135deg,#1F1208,#2A1A08);border:1px solid #C8933A;border-radius:20px;padding:20px 22px;position:relative;overflow:hidden}
+.dinner-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#C8933A,#F5C86A,#C8933A)}
+.dinner-label{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#C8933A;margin-bottom:12px;display:flex;align-items:center;gap:7px}
+.dinner-name{font-family:"Playfair Display",serif;font-size:20px;color:#E8E0D0;margin-bottom:4px;line-height:1.3}
+.dinner-tagline{font-size:12px;color:#C8933A;font-weight:500;margin-bottom:8px}
+.dinner-desc{font-size:13px;color:#9A8E7E;line-height:1.6;margin-bottom:10px}
+.dinner-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.dinner-pill{font-size:11px;background:#1A1208;border:1px solid #3A3020;border-radius:99px;padding:3px 10px;color:#9A8E7E}
+.dinner-must{font-size:12px;color:#6A5A40;padding-top:8px;border-top:1px solid #3A3020}
+.dinner-must strong{color:#C8933A}
+.dinner-change{font-size:11px;color:#6A5A40;text-align:center;margin-top:10px;cursor:pointer;text-decoration:underline}
 </style>
 </head>
 <body>
@@ -83,6 +121,89 @@ body{background:#1A1A1A;color:#E8E0D0;font-family:"DM Sans",sans-serif;min-heigh
   <h1>Peru Trip 2026</h1>
   <div class="header-sub">May 1&ndash;6, 2026</div>
 </div>
+
+<div class="picker-overlay" id="pickerOverlay" style="display:none">
+  <div class="picker-inner">
+    <div style="text-align:center;font-size:28px;margin-bottom:12px">🎂 🍽️ 🌄</div>
+    <div class="picker-title">Pick your birthday dinner</div>
+    <div class="picker-sub">Tonight in Aguas Calientes — choose where you want to celebrate after Machu Picchu tomorrow<br><span style="font-size:11px;color:#C8933A">&#10003; All dishes below are chicken, fish or vegetarian</span></div>
+
+    <div class="rest-card" onclick="selectRest(this,'Indio Feliz')">
+      <div class="selected-check">✓</div>
+      <div class="rest-rank">🥇</div>
+      <div class="rest-name">Indio Feliz</div>
+      <div class="rest-tagline">French-Peruvian Fusion · The local legend</div>
+      <div class="rest-desc">The most celebrated restaurant in Aguas Calientes — a bohemian candlelit courtyard with vibrant murals and sculptures. French techniques meet Andean ingredients in a setting that feels genuinely special. Locals and return visitors always come back here.</div>
+      <div class="rest-meta">
+        <span class="rest-pill price">~$25–35/person</span>
+        <span class="rest-pill">Romantic atmosphere</span>
+        <span class="rest-pill">Candlelit courtyard</span>
+      </div>
+      <div class="rest-must"><strong>Must order:</strong> Trout in passion fruit sauce · Alpaca steak · Creamy ceviche</div>
+    </div>
+
+    <div class="rest-card" onclick="selectRest(this,'TUNAWA Andean Fusion')">
+      <div class="selected-check">✓</div>
+      <div class="rest-rank">🥈</div>
+      <div class="rest-name">TUNAWA Andean Fusion</div>
+      <div class="rest-tagline">Contemporary Peruvian · The finest food in town</div>
+      <div class="rest-desc">Rivals Lima's finest establishments with innovative dishes and creative presentations. The six-course degustation menu is extraordinary. River views, refined service, and the most technically impressive kitchen in Aguas Calientes.</div>
+      <div class="rest-meta">
+        <span class="rest-pill price">~$35–50/person</span>
+        <span class="rest-pill">River views</span>
+        <span class="rest-pill">Modern cuisine</span>
+      </div>
+      <div class="rest-must"><strong>Must order:</strong> Laguna ceviche with passion fruit · Aji de gallina ravioli (chicken) · Grilled trucha</div>
+    </div>
+
+    <div class="rest-card" onclick="selectRest(this,'Chullpi')">
+      <div class="selected-check">✓</div>
+      <div class="rest-rank">🥉</div>
+      <div class="rest-name">Chullpi</div>
+      <div class="rest-tagline">Modern Peruvian · Fun terrace vibes</div>
+      <div class="rest-desc">Great food, great views, and outstanding service on a lively river terrace. Famous for the chocolate treasure dessert that people specifically return for. The perfect choice if you want something celebratory but relaxed after a big emotional day.</div>
+      <div class="rest-meta">
+        <span class="rest-pill price">~$18–28/person</span>
+        <span class="rest-pill">River terrace</span>
+        <span class="rest-pill">Craft beer</span>
+      </div>
+      <div class="rest-must"><strong>Must order:</strong> Grilled trout with Andean herbs · Chicken lomo saltado · Chocolate treasure dessert (do not skip this!)</div>
+    </div>
+
+    <div class="rest-card" onclick="selectRest(this,'Inti House')">
+      <div class="selected-check">✓</div>
+      <div class="rest-rank">4️⃣</div>
+      <div class="rest-name">Inti House</div>
+      <div class="rest-tagline">Peruvian Classics · Warm and family-friendly</div>
+      <div class="rest-desc">A warm, generous, no-fuss restaurant beloved by locals and families. Perfect if the day has been long and you want comfort food done really well. Great for the little one too — big portions, relaxed pace, no pretension.</div>
+      <div class="rest-meta">
+        <span class="rest-pill price">~$12–20/person</span>
+        <span class="rest-pill">Family-friendly</span>
+        <span class="rest-pill">Comfort food</span>
+      </div>
+      <div class="rest-must"><strong>Must order:</strong> Trout in maracuyá sauce · Chicken aji de gallina · Fresh chicha morada for the table</div>
+    </div>
+
+    <div class="rest-card" onclick="selectRest(this,'El Mapi by Inkaterra')">
+      <div class="selected-check">✓</div>
+      <div class="rest-rank">5️⃣</div>
+      <div class="rest-name">El Mapi by Inkaterra</div>
+      <div class="rest-tagline">Boutique Hotel Dining · Sleek and sophisticated</div>
+      <div class="rest-desc">The most polished hotel restaurant in Aguas Calientes, inside the beautiful Inkaterra boutique hotel. Ingredients sourced directly from the Sacred Valley and Amazon. Sophisticated but approachable — the feeling of being somewhere special without the formality.</div>
+      <div class="rest-meta">
+        <span class="rest-pill price">~$25–40/person</span>
+        <span class="rest-pill">Hotel restaurant</span>
+        <span class="rest-pill">Sacred Valley ingredients</span>
+      </div>
+      <div class="rest-must"><strong>Must order:</strong> Grilled trucha a la parrilla · Chicken causa rellena · Quinoa risotto with Andean herbs</div>
+    </div>
+
+    <div class="picker-confirm" id="pickerConfirm">
+      <button class="confirm-btn" onclick="confirmRest()">We're going to <span id="confirmName">...</span> tonight! 🎉</button>
+    </div>
+  </div>
+</div>
+
 <div class="main" id="main"></div>
 
 <script>
@@ -418,6 +539,10 @@ function render() {
     '</div>';
   }
 
+  // Add tonight's dinner card at the bottom
+  var todayDinner = buildDinnerCard(todayKey);
+  if (todayDinner) html += todayDinner;
+
   main.innerHTML = html;
 }
 
@@ -456,9 +581,149 @@ function tickCountdown() {
   if (sec)  sec.textContent  = cd.s;
 }
 
+
+var PICKED_REST_KEY = 'peru_dinner_pick_may1';
+var selectedRestName = null;
+
+function selectRest(card, name) {
+  document.querySelectorAll('.rest-card').forEach(function(c) { c.classList.remove('selected'); });
+  card.classList.add('selected');
+  selectedRestName = name;
+  document.getElementById('confirmName').textContent = name;
+  document.getElementById('pickerConfirm').classList.add('show');
+}
+
+function confirmRest() {
+  if (!selectedRestName) return;
+  try { localStorage.setItem(PICKED_REST_KEY, selectedRestName); } catch(e) {}
+  document.getElementById('pickerOverlay').style.display = 'none';
+  // Update the May 1 dinner event name in schedule
+  showPickedDinner(selectedRestName);
+}
+
+function showPickedDinner(name) {
+  // Update SCHEDULE dinner entry for May 1 to reflect choice
+  if (SCHEDULE['2026-05-01'] && SCHEDULE['2026-05-01'][6]) {
+    SCHEDULE['2026-05-01'][6].name = 'Dinner — ' + name;
+  }
+}
+
+function checkShouldShowPicker() {
+  var now = getPeruTime();
+  var may1 = new Date('2026-05-01T00:00:00-05:00');
+  var may2 = new Date('2026-05-02T00:00:00-05:00');
+  // Only show on May 1
+  if (now < may1 || now >= may2) return;
+  // Check if already picked
+  try {
+    var picked = localStorage.getItem(PICKED_REST_KEY);
+    if (picked) { showPickedDinner(picked); return; }
+  } catch(e) {}
+  // Show the picker
+  document.getElementById('pickerOverlay').style.display = 'block';
+}
+
+
+var DINNERS = {
+  "2026-05-01": {
+    chosen: true,
+    name: "TBD — birthday girl picks!",
+    tagline: "She chooses tonight",
+    desc: "The birthday girl picks her restaurant tonight from 5 options. Ask her which one she wants!",
+    pills: ["Her choice", "Tonight in Aguas Calientes"],
+    must: "She decides!"
+  },
+  "2026-05-02": {
+    name: "Restaurant Ayahuasca Grill",
+    tagline: "Rated 4.9 · Hidden gem uphill from the tourist strip",
+    desc: "Walk uphill away from the train station crowd to find this local favourite. Bohemian atmosphere, the owner sometimes performs live, and the best trout and chicken in town.",
+    pills: ["~$15–25/person", "Chicken & fish", "Hidden gem"],
+    must: "Trucha a la parrilla (grilled trout) · Pollo saltado · Chicha morada"
+  },
+  "2026-05-03": {
+    name: "Morena Peruvian Kitchen",
+    tagline: "Birthday dinner · Plaza de Armas, Cusco · Reserved",
+    desc: "Window table overlooking the illuminated Plaza de Armas. Famous for trucha tacos and exceptional fish dishes. Birthday decoration arranged on the table. The finest dinner of the trip.",
+    pills: ["~$30–45/person", "Reservation confirmed", "Birthday dinner"],
+    must: "Trucha tacos · Ceviche de trucha · Pollo a la brasa"
+  },
+  "2026-05-04": {
+    name: "Chull's Peruvian Cuisine",
+    tagline: "Rated 4.9 · Farewell Cusco dinner",
+    desc: "Cozy hidden courtyard restaurant, the perfect send-off for Cusco. Known for creative takes on Peruvian classics. Order Chicha Morada for the whole table.",
+    pills: ["~$15–25/person", "Chicken & fish", "Courtyard"],
+    must: "Aji de gallina (creamy chicken) · Trucha andina · Chicha Morada for the kid"
+  },
+  "2026-05-05": {
+    name: "Airport or hotel restaurant",
+    tagline: "Travel day — keep it light",
+    desc: "Long travel day to Bogota. Eat a light lunch near the Plaza de Armas before heading to the airport. Grab snacks at Cusco airport for the flight.",
+    pills: ["Light meal", "Travel day"],
+    must: "Keep it simple — soup, sandwich, or a bowl of quinoa"
+  },
+  "2026-05-06": {
+    name: "La Candelaria local spots",
+    tagline: "Bogota · Colombian flavours",
+    desc: "Explore La Candelaria historic district at lunch. Street food vendors and local restaurants serve arepas, empanadas, and fresh chicken dishes. No reservations needed.",
+    pills: ["$10–20/person", "Colombian cuisine", "No reservation"],
+    must: "Empanadas de pipian · Ajiaco (chicken soup) · Fresh lulo juice"
+  }
+};
+
+function buildDinnerCard(todayKey) {
+  var dinner = DINNERS[todayKey];
+  if (!dinner) return "";
+
+  // On May 1, check if she already picked
+  if (todayKey === "2026-05-01") {
+    try {
+      var picked = localStorage.getItem('peru_dinner_pick_may1');
+      if (picked) {
+        dinner = {
+          name: picked,
+          tagline: "Her choice for tonight",
+          desc: "The birthday girl has made her pick! Make sure to book a table when you arrive at the restaurant.",
+          pills: ["Tonight in Aguas Calientes", "Her choice"],
+          must: "Whatever she wants — it is her birthday!"
+        };
+      }
+    } catch(e) {}
+  }
+
+  var html = '<div class="dinner-card">' +
+    '<div class="dinner-label">&#127860; Tonight\'s dinner</div>' +
+    '<div class="dinner-name">' + dinner.name + '</div>' +
+    '<div class="dinner-tagline">' + dinner.tagline + '</div>' +
+    '<div class="dinner-desc">' + dinner.desc + '</div>' +
+    '<div class="dinner-pills">';
+  for (var i = 0; i < dinner.pills.length; i++) {
+    html += '<span class="dinner-pill">' + dinner.pills[i] + '</span>';
+  }
+  html += '</div>';
+  html += '<div class="dinner-must"><strong>&#127869; Must order:</strong> ' + dinner.must + '</div>';
+
+  // On May 1, offer to change if already picked
+  if (todayKey === "2026-05-01") {
+    try {
+      if (localStorage.getItem('peru_dinner_pick_may1')) {
+        html += '<div class="dinner-change" onclick="changeDinner()">Change restaurant choice</div>';
+      }
+    } catch(e) {}
+  }
+
+  html += '</div>';
+  return html;
+}
+
+function changeDinner() {
+  try { localStorage.removeItem('peru_dinner_pick_may1'); } catch(e) {}
+  document.getElementById('pickerOverlay').style.display = 'block';
+}
+
 // ─── INIT ────────────────────────────────────────────────────────────────────
 updateClock();
 render();
+checkShouldShowPicker();
 setInterval(updateClock, 1000);
 setInterval(tickCountdown, 1000);
 setInterval(render, 60000);

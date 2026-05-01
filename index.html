@@ -513,7 +513,8 @@ function render() {
   var checkNext = current ? items[currentIdx + 1] : (nextIdx >= 0 ? items[nextIdx] : null);
   if (checkNext && (toMins(checkNext.time) - nowMins) <= 60) nextWithinHour = checkNext;
 
-  html = '<div class="day-label">' + (DAY_LABELS[todayKey] || todayKey) + '</div>';
+  html = '';
+  html += '<div class="day-label">' + (DAY_LABELS[todayKey] || todayKey) + '</div>';
   if (isBirthday) html += '<div style="text-align:center;font-size:28px;letter-spacing:4px;margin:-4px 0 4px">&#127874; &#127881; &#127748;</div>';
 
   if (current) {

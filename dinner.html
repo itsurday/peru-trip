@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tonight's Dinner — Aguas Calientes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#1A1A1A;color:#E8E0D0;font-family:"DM Sans",sans-serif;min-height:100vh}
+.header{background:linear-gradient(135deg,#1A1208 0%,#2A1F0A 50%,#1A1208 100%);border-bottom:1px solid #C8933A;padding:20px 20px 16px;text-align:center;position:relative}
+.back-btn{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:13px;color:#C8933A;text-decoration:none;display:flex;align-items:center;gap:4px}
+.header h1{font-family:"Playfair Display",serif;font-size:20px;font-weight:500;color:#C8933A}
+.header-sub{font-size:12px;color:#9A8E7E;margin-top:3px}
+.main{padding:20px;max-width:480px;margin:0 auto}
+.intro{font-size:13px;color:#9A8E7E;text-align:center;margin-bottom:20px;line-height:1.6;padding:12px 16px;background:#1F1A10;border:1px solid #3A3020;border-radius:12px}
+.intro strong{color:#C8933A}
+.rest-card{background:#2A2A2A;border:1px solid #3A3020;border-radius:20px;padding:20px 22px;margin-bottom:14px;position:relative;overflow:hidden}
+.rest-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#C8933A,#F5C86A,#C8933A)}
+.rest-rank{font-size:22px;margin-bottom:8px}
+.rest-name{font-family:"Playfair Display",serif;font-size:20px;color:#E8E0D0;margin-bottom:4px}
+.rest-tagline{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#C8933A;margin-bottom:10px}
+.rest-desc{font-size:13px;color:#9A8E7E;line-height:1.6;margin-bottom:12px}
+.rest-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.rest-pill{font-size:11px;background:#1A1208;border:1px solid #3A3020;border-radius:99px;padding:3px 10px;color:#9A8E7E}
+.rest-must{font-size:12px;color:#6A5A40;padding-top:10px;border-top:1px solid #3A3020}
+.rest-must strong{color:#C8933A}
+.rest-vibe{font-size:12px;color:#6A5A40;margin-top:6px}
+.rest-vibe strong{color:#9A8E7E}
+.footer{text-align:center;padding:24px 0 32px;font-size:12px;color:#3A3228}
+.note{font-size:12px;color:#6A5E4E;text-align:center;margin-bottom:20px}
+</style>
+</head>
+<body>
+<div class="header">
+  <a class="back-btn" href="index.html">&#8592; Back</a>
+  <h1>Tonight's Dinner</h1>
+  <div class="header-sub">Aguas Calientes &middot; May 1, 2026 &middot; Pick your favourite</div>
+</div>
+<div class="main">
+  <div class="intro">
+    All restaurants below serve <strong>chicken and fish only</strong> — no red meat. <br>Ask the hotel to book a table when you arrive. &#127860;
+  </div>
+  <div class="note">All dishes are chicken, fish, or vegetarian &#10003;</div>
+
+  <div class="rest-card">
+    <div class="rest-rank">&#127937;</div>
+    <div class="rest-name">Indio Feliz</div>
+    <div class="rest-tagline">French-Peruvian Fusion &middot; The local legend</div>
+    <div class="rest-desc">The most celebrated restaurant in Aguas Calientes — a bohemian candlelit courtyard filled with vibrant murals and sculptures. French techniques meet Andean ingredients in a setting that feels genuinely special. Locals and return visitors always come back here. The atmosphere alone makes it feel like a celebration.</div>
+    <div class="rest-pills">
+      <span class="rest-pill">~$25&ndash;35/person</span>
+      <span class="rest-pill">Romantic courtyard</span>
+      <span class="rest-pill">Candlelit</span>
+      <span class="rest-pill">Reservations advised</span>
+    </div>
+    <div class="rest-must"><strong>&#127869; Must order:</strong> Trout in passion fruit sauce &middot; Aji de gallina (creamy chicken) &middot; Creamy trout ceviche</div>
+    <div class="rest-vibe"><strong>Best for:</strong> Special occasion feel &middot; Romantic atmosphere &middot; Most memorable experience</div>
+  </div>
+
+  <div class="rest-card">
+    <div class="rest-rank">&#127938;</div>
+    <div class="rest-name">TUNAWA Andean Fusion</div>
+    <div class="rest-tagline">Contemporary Peruvian &middot; The finest food in town</div>
+    <div class="rest-desc">Rivals Lima's finest establishments with innovative dishes and creative presentations. The six-course degustation menu is extraordinary. River views, refined service, and the most technically impressive kitchen in Aguas Calientes. If she loves creative cuisine this is her choice.</div>
+    <div class="rest-pills">
+      <span class="rest-pill">~$35&ndash;50/person</span>
+      <span class="rest-pill">River views</span>
+      <span class="rest-pill">Modern cuisine</span>
+      <span class="rest-pill">Upscale</span>
+    </div>
+    <div class="rest-must"><strong>&#127869; Must order:</strong> Laguna ceviche with passion fruit &middot; Aji de gallina ravioli (chicken) &middot; Grilled trucha</div>
+    <div class="rest-vibe"><strong>Best for:</strong> Best food quality &middot; Most refined experience &middot; Food lovers</div>
+  </div>
+
+  <div class="rest-card">
+    <div class="rest-rank">&#127939;</div>
+    <div class="rest-name">Chullpi</div>
+    <div class="rest-tagline">Modern Peruvian &middot; Fun river terrace vibes</div>
+    <div class="rest-desc">Great food, great views, and outstanding service on a lively river terrace. Famous for the chocolate treasure dessert that people specifically return for. The perfect choice if you want something celebratory but relaxed after a big emotional day at Machu Picchu tomorrow.</div>
+    <div class="rest-pills">
+      <span class="rest-pill">~$18&ndash;28/person</span>
+      <span class="rest-pill">River terrace</span>
+      <span class="rest-pill">Craft beer</span>
+      <span class="rest-pill">Lively atmosphere</span>
+    </div>
+    <div class="rest-must"><strong>&#127869; Must order:</strong> Grilled trout with Andean herbs &middot; Chicken lomo saltado &middot; Chocolate treasure dessert (do not skip!)</div>
+    <div class="rest-vibe"><strong>Best for:</strong> Relaxed evening &middot; Great dessert &middot; Fun and casual</div>
+  </div>
+
+  <div class="rest-card">
+    <div class="rest-rank">4&#65039;&#8419;</div>
+    <div class="rest-name">Inti House</div>
+    <div class="rest-tagline">Peruvian Classics &middot; Warm and family-friendly</div>
+    <div class="rest-desc">A warm, generous, no-fuss restaurant beloved by locals and families. Perfect if the day has been long and you want comfort food done really well. Great for the little one too — big portions, relaxed pace, no pretension. Chicha Morada is a must for the table.</div>
+    <div class="rest-pills">
+      <span class="rest-pill">~$12&ndash;20/person</span>
+      <span class="rest-pill">Family-friendly</span>
+      <span class="rest-pill">Comfort food</span>
+      <span class="rest-pill">Best value</span>
+    </div>
+    <div class="rest-must"><strong>&#127869; Must order:</strong> Trout in maracuya sauce &middot; Chicken aji de gallina &middot; Fresh chicha morada for the table</div>
+    <div class="rest-vibe"><strong>Best for:</strong> Tired family &middot; Comfort food &middot; Best value for money</div>
+  </div>
+
+  <div class="rest-card">
+    <div class="rest-rank">5&#65039;&#8419;</div>
+    <div class="rest-name">El Mapi by Inkaterra</div>
+    <div class="rest-tagline">Boutique Hotel Dining &middot; Sleek and sophisticated</div>
+    <div class="rest-desc">The most polished hotel restaurant in Aguas Calientes, inside the beautiful Inkaterra boutique hotel. Ingredients sourced directly from the Sacred Valley and Amazon. Sophisticated but approachable — the feeling of being somewhere special without full fine dining formality.</div>
+    <div class="rest-pills">
+      <span class="rest-pill">~$25&ndash;40/person</span>
+      <span class="rest-pill">Hotel restaurant</span>
+      <span class="rest-pill">Sacred Valley ingredients</span>
+    </div>
+    <div class="rest-must"><strong>&#127869; Must order:</strong> Grilled trucha a la parrilla &middot; Chicken causa rellena &middot; Quinoa risotto with Andean herbs</div>
+    <div class="rest-vibe"><strong>Best for:</strong> Boutique feel &middot; Quality ingredients &middot; Sophisticated but relaxed</div>
+  </div>
+
+  <div class="footer">Ask the hotel to reserve a table as soon as you check in &#127860;</div>
+</div>
+</body>
+</html>

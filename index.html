@@ -22,6 +22,7 @@ body{background:#1A1A1A;color:#E8E0D0;font-family:"DM Sans",sans-serif;min-heigh
 .birthday-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7A2040,#D4537E,#7A2040)}
 .pre-card{background:#2A2A2A;border:1px solid #3A3020;border-radius:20px;padding:32px 24px;text-align:center}
 .free-card{background:#2A2A2A;border:1px solid #3A3A3A;border-radius:20px;padding:40px 24px;text-align:center}
+.nothing-card{background:#2A2A2A;border:1px dashed #3A3A3A;border-radius:20px;padding:28px 24px;text-align:center}
 .card-label{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:7px;color:#40916C}
 .birthday-card .card-label{color:#D4537E}
 .next-card .card-label{color:#9A8E7E}
@@ -43,7 +44,6 @@ body{background:#1A1A1A;color:#E8E0D0;font-family:"DM Sans",sans-serif;min-heigh
 .prog-track{height:3px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;margin-bottom:6px}
 .prog-fill{height:100%;background:#40916C;border-radius:99px}
 .prog-labels{display:flex;justify-content:space-between;font-size:11px;color:#9A8E7E}
-.nothing-card{background:#2A2A2A;border:1px dashed #3A3A3A;border-radius:20px;padding:28px 24px;text-align:center}
 .cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0}
 .cd-cell{background:#1F1A10;border:1px solid #3A3020;border-radius:10px;padding:10px 4px;text-align:center}
 .cd-num{font-family:"Playfair Display",serif;font-size:24px;color:#C8933A;display:block}
@@ -61,55 +61,29 @@ body{background:#1A1A1A;color:#E8E0D0;font-family:"DM Sans",sans-serif;min-heigh
 .flight-time-label{font-size:12px;color:#9A8E7E}
 .flight-time-val{color:#E8E0D0;font-weight:500}
 .facts-card{background:#1F1A10;border:1px solid #3A3020;border-radius:16px;padding:18px 20px}
-.facts-header{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.facts-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
 .facts-icon{font-size:18px}
 .facts-title{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#C8933A}
 .facts-place{font-size:12px;color:#9A8E7E;margin-top:1px}
+.reveal-hint{font-size:11px;color:#6A5E4E;text-align:center;margin-bottom:10px;font-style:italic}
 .fact-item{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start;cursor:pointer}
 .fact-item:last-child{margin-bottom:0}
 .fact-num{width:22px;height:22px;border-radius:50%;background:#3A3020;border:1px solid #C8933A;font-size:10px;font-weight:500;color:#C8933A;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:all .2s}
 .fact-text{font-size:13px;color:#9A8E7E;line-height:1.6;flex:1;transition:all .2s}
 .fact-item.revealed .fact-num{background:#C8933A;color:#1A1208}
 .fact-item.revealed .fact-text{color:#E8E0D0}
-.reveal-hint{font-size:11px;color:#6A5E4E;text-align:center;margin-top:10px;font-style:italic}
-
-.picker-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(10,8,4,.97);z-index:9999;overflow-y:auto;padding:24px 20px 40px}
-.picker-inner{max-width:480px;margin:0 auto}
-.picker-title{font-family:"Playfair Display",serif;font-size:22px;color:#C8933A;text-align:center;margin-bottom:4px}
-.picker-sub{font-size:13px;color:#9A8E7E;text-align:center;margin-bottom:20px;line-height:1.6}
-.rest-card{background:#2A2A2A;border:1px solid #3A3020;border-radius:16px;padding:16px 18px;margin-bottom:12px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
-.rest-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#C8933A,#F5C86A,#C8933A);opacity:0;transition:opacity .2s}
-.rest-card:hover{border-color:#C8933A;transform:translateY(-2px)}
-.rest-card:hover::before{opacity:1}
-.rest-card.selected{border-color:#C8933A;background:#1F1A10}
-.rest-card.selected::before{opacity:1}
-.rest-rank{font-size:20px;margin-bottom:6px}
-.rest-name{font-family:"Playfair Display",serif;font-size:18px;color:#E8E0D0;margin-bottom:4px}
-.rest-tagline{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#C8933A;margin-bottom:8px}
-.rest-desc{font-size:13px;color:#9A8E7E;line-height:1.6;margin-bottom:10px}
-.rest-meta{display:flex;gap:12px;flex-wrap:wrap}
-.rest-pill{font-size:11px;background:#1A1208;border:1px solid #3A3020;border-radius:99px;padding:3px 10px;color:#9A8E7E}
-.rest-pill.price{color:#C8933A;border-color:#C8933A}
-.rest-must{font-size:12px;color:#6A5A40;margin-top:8px;padding-top:8px;border-top:1px solid #3A3020}
-.rest-must strong{color:#C8933A}
-.picker-confirm{display:none;position:sticky;bottom:0;padding:16px 0 0;background:linear-gradient(transparent,rgba(10,8,4,.97) 40%)}
-.picker-confirm.show{display:block}
-.confirm-btn{width:100%;background:linear-gradient(135deg,#C8933A,#F5C86A);border:none;border-radius:14px;color:#1A1208;font-family:"Playfair Display",serif;font-size:17px;padding:14px;cursor:pointer;font-weight:500;letter-spacing:.02em}
-.confirm-btn:active{opacity:.9;transform:scale(.98)}
-.selected-check{position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;background:#C8933A;color:#1A1208;font-size:13px;display:none;align-items:center;justify-content:center;font-weight:700}
-.rest-card.selected .selected-check{display:flex}
-
 .dinner-card{background:linear-gradient(135deg,#1F1208,#2A1A08);border:1px solid #C8933A;border-radius:20px;padding:20px 22px;position:relative;overflow:hidden}
 .dinner-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#C8933A,#F5C86A,#C8933A)}
 .dinner-label{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#C8933A;margin-bottom:12px;display:flex;align-items:center;gap:7px}
-.dinner-name{font-family:"Playfair Display",serif;font-size:20px;color:#E8E0D0;margin-bottom:4px;line-height:1.3}
+.dinner-name{font-family:"Playfair Display",serif;font-size:20px;color:#E8E0D0;margin-bottom:4px}
 .dinner-tagline{font-size:12px;color:#C8933A;font-weight:500;margin-bottom:8px}
 .dinner-desc{font-size:13px;color:#9A8E7E;line-height:1.6;margin-bottom:10px}
 .dinner-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
 .dinner-pill{font-size:11px;background:#1A1208;border:1px solid #3A3020;border-radius:99px;padding:3px 10px;color:#9A8E7E}
-.dinner-must{font-size:12px;color:#6A5A40;padding-top:8px;border-top:1px solid #3A3020}
+.dinner-must{font-size:12px;color:#6A5A40;padding-top:8px;border-top:1px solid #3A3020;margin-bottom:10px}
 .dinner-must strong{color:#C8933A}
-.dinner-change{font-size:11px;color:#6A5A40;text-align:center;margin-top:10px;cursor:pointer;text-decoration:underline}
+.dinner-options-link{display:block;text-align:center;font-size:12px;color:#C8933A;text-decoration:none;padding:8px;border:1px solid #3A3020;border-radius:10px;margin-top:4px;letter-spacing:.04em}
+.dinner-options-link:hover{background:#1F1A10}
 </style>
 </head>
 <body>
@@ -121,103 +95,19 @@ body{background:#1A1A1A;color:#E8E0D0;font-family:"DM Sans",sans-serif;min-heigh
   <h1>Peru Trip 2026</h1>
   <div class="header-sub">May 1&ndash;6, 2026</div>
 </div>
-
-<div class="picker-overlay" id="pickerOverlay" style="display:none">
-  <div class="picker-inner">
-    <div style="text-align:center;font-size:28px;margin-bottom:12px">🎂 🍽️ 🌄</div>
-    <div class="picker-title">Pick your birthday dinner</div>
-    <div class="picker-sub">Tonight in Aguas Calientes — choose where you want to celebrate after Machu Picchu tomorrow<br><span style="font-size:11px;color:#C8933A">&#10003; All dishes below are chicken, fish or vegetarian</span></div>
-
-    <div class="rest-card" onclick="selectRest(this,'Indio Feliz')">
-      <div class="selected-check">✓</div>
-      <div class="rest-rank">🥇</div>
-      <div class="rest-name">Indio Feliz</div>
-      <div class="rest-tagline">French-Peruvian Fusion · The local legend</div>
-      <div class="rest-desc">The most celebrated restaurant in Aguas Calientes — a bohemian candlelit courtyard with vibrant murals and sculptures. French techniques meet Andean ingredients in a setting that feels genuinely special. Locals and return visitors always come back here.</div>
-      <div class="rest-meta">
-        <span class="rest-pill price">~$25–35/person</span>
-        <span class="rest-pill">Romantic atmosphere</span>
-        <span class="rest-pill">Candlelit courtyard</span>
-      </div>
-      <div class="rest-must"><strong>Must order:</strong> Trout in passion fruit sauce · Alpaca steak · Creamy ceviche</div>
-    </div>
-
-    <div class="rest-card" onclick="selectRest(this,'TUNAWA Andean Fusion')">
-      <div class="selected-check">✓</div>
-      <div class="rest-rank">🥈</div>
-      <div class="rest-name">TUNAWA Andean Fusion</div>
-      <div class="rest-tagline">Contemporary Peruvian · The finest food in town</div>
-      <div class="rest-desc">Rivals Lima's finest establishments with innovative dishes and creative presentations. The six-course degustation menu is extraordinary. River views, refined service, and the most technically impressive kitchen in Aguas Calientes.</div>
-      <div class="rest-meta">
-        <span class="rest-pill price">~$35–50/person</span>
-        <span class="rest-pill">River views</span>
-        <span class="rest-pill">Modern cuisine</span>
-      </div>
-      <div class="rest-must"><strong>Must order:</strong> Laguna ceviche with passion fruit · Aji de gallina ravioli (chicken) · Grilled trucha</div>
-    </div>
-
-    <div class="rest-card" onclick="selectRest(this,'Chullpi')">
-      <div class="selected-check">✓</div>
-      <div class="rest-rank">🥉</div>
-      <div class="rest-name">Chullpi</div>
-      <div class="rest-tagline">Modern Peruvian · Fun terrace vibes</div>
-      <div class="rest-desc">Great food, great views, and outstanding service on a lively river terrace. Famous for the chocolate treasure dessert that people specifically return for. The perfect choice if you want something celebratory but relaxed after a big emotional day.</div>
-      <div class="rest-meta">
-        <span class="rest-pill price">~$18–28/person</span>
-        <span class="rest-pill">River terrace</span>
-        <span class="rest-pill">Craft beer</span>
-      </div>
-      <div class="rest-must"><strong>Must order:</strong> Grilled trout with Andean herbs · Chicken lomo saltado · Chocolate treasure dessert (do not skip this!)</div>
-    </div>
-
-    <div class="rest-card" onclick="selectRest(this,'Inti House')">
-      <div class="selected-check">✓</div>
-      <div class="rest-rank">4️⃣</div>
-      <div class="rest-name">Inti House</div>
-      <div class="rest-tagline">Peruvian Classics · Warm and family-friendly</div>
-      <div class="rest-desc">A warm, generous, no-fuss restaurant beloved by locals and families. Perfect if the day has been long and you want comfort food done really well. Great for the little one too — big portions, relaxed pace, no pretension.</div>
-      <div class="rest-meta">
-        <span class="rest-pill price">~$12–20/person</span>
-        <span class="rest-pill">Family-friendly</span>
-        <span class="rest-pill">Comfort food</span>
-      </div>
-      <div class="rest-must"><strong>Must order:</strong> Trout in maracuyá sauce · Chicken aji de gallina · Fresh chicha morada for the table</div>
-    </div>
-
-    <div class="rest-card" onclick="selectRest(this,'El Mapi by Inkaterra')">
-      <div class="selected-check">✓</div>
-      <div class="rest-rank">5️⃣</div>
-      <div class="rest-name">El Mapi by Inkaterra</div>
-      <div class="rest-tagline">Boutique Hotel Dining · Sleek and sophisticated</div>
-      <div class="rest-desc">The most polished hotel restaurant in Aguas Calientes, inside the beautiful Inkaterra boutique hotel. Ingredients sourced directly from the Sacred Valley and Amazon. Sophisticated but approachable — the feeling of being somewhere special without the formality.</div>
-      <div class="rest-meta">
-        <span class="rest-pill price">~$25–40/person</span>
-        <span class="rest-pill">Hotel restaurant</span>
-        <span class="rest-pill">Sacred Valley ingredients</span>
-      </div>
-      <div class="rest-must"><strong>Must order:</strong> Grilled trucha a la parrilla · Chicken causa rellena · Quinoa risotto with Andean herbs</div>
-    </div>
-
-    <div class="picker-confirm" id="pickerConfirm">
-      <button class="confirm-btn" onclick="confirmRest()">We're going to <span id="confirmName">...</span> tonight! 🎉</button>
-    </div>
-  </div>
-</div>
-
 <div class="main" id="main"></div>
 
 <script>
-// ─── SCHEDULE DATA ────────────────────────────────────────────────────────────
 var SCHEDULE = {
   "2026-05-01": [
     { time:"11:20", end:"12:30", name:"Land at Cusco Airport", desc:"TreXperience driver waiting at arrivals. Clear immigration + collect bags (~75 min).", type:"logistics", place:"Cusco Airport (CUZ)", facts:["Cusco Airport sits at 3,399m — one of the highest commercial airports in the world!","The word Cusco in Quechua means Navel of the World — the Incas believed it was the center of the universe.","Your body needs 24-48 hrs to adjust to the altitude here. Drink lots of water and go slow!","Coca tea is served everywhere in Cusco — it helps with altitude sickness and tastes like green tea.","The Inca Empire was the largest empire in pre-Columbian America, stretching 4,300 km along the Andes.","Cusco was the capital of the Inca Empire from the 13th century until Spanish conquest in 1533.","The city was deliberately built in the shape of a puma — a sacred animal in Inca culture.","Quechua, the language of the Incas, is still spoken by over 8 million people today.","Cusco receives about 2 million tourists every year — more than any other city in Peru.","The average temperature in Cusco in May is a cool 18C during the day and near freezing at night."] },
-    { time:"12:30", end:"15:07", name:"Drive to Ollantaytambo", desc:"Private van ~1.5 hrs. Drop checked bag at PeruRail free storage. Quick lunch in town.", type:"logistics", place:"Sacred Valley", facts:["The Sacred Valley stretches 60km between Cusco and Machu Picchu along the Urubamba River.","The Incas grew over 3,000 varieties of potato in the Sacred Valley — yes, 3,000!","The valley sits 600m lower than Cusco, so the air feels noticeably easier to breathe here.","Incan farmers built terraces called andenes to farm steep hillsides — some are still used today.","The Urubamba River flowing through the valley was called Willkamayu meaning Sacred River in Quechua.","The Sacred Valley was chosen by the Incas for its perfect farming climate and spiritual energy.","You might spot condors soaring above the valley — they have a wingspan of up to 3.2 meters!","Local women in the valley still wear traditional colorful clothing called polleras every day.","The valley produces the best corn in Peru — the kernels are giant compared to regular corn.","Archaeologists are still discovering new Inca ruins hidden in the mountains of the Sacred Valley."] },
-    { time:"15:07", end:"15:37", name:"Board train at Ollantaytambo", desc:"PeruRail Vistadome Observatory 603. Be on the platform 30 min before departure.", type:"logistics", place:"Ollantaytambo", facts:["Ollantaytambo is the only Inca town in Peru still inhabited in original Inca buildings!","The fortress was one of the few places where the Incas successfully defeated the Spanish conquistadors.","The town was built in the shape of a maize cob — corn was sacred to the Incas.","Water channels built by the Incas 600 years ago still run through the streets today.","The massive stone blocks were quarried from a mountain 6km away and across the river!","Ollantaytambo means Resting place of Ollanta — named after a legendary Inca general.","The town has had running water since Inca times — one of the oldest water systems in the Americas.","Local kids play football in the same plaza where Inca ceremonies were held 500 years ago.","The ruins were used as a filming location for the movie The Motorcycle Diaries.","You can still see the original Inca walls lining the narrow streets — the Spanish built on top of them."] },
-    { time:"15:37", end:"17:02", name:"Train to Aguas Calientes", desc:"Panoramic cloud forest journey. Arrives Machu Picchu Pueblo station 17:02.", type:"afternoon", place:"Cloud Forest Railway", facts:["The train descends over 1,500m in just 1.5 hours — one of the most dramatic rail journeys on Earth!","The cloud forest you are passing through is home to over 300 species of orchid.","This valley is so narrow that the train tracks were built right next to the rushing Urubamba River.","The cloud forest produces its own rain — clouds get trapped by the mountains constantly.","You might spot a torrent duck on the river rocks — one of the few birds that swim in rapids.","The Vistadome glass roof lets you see the mountain peaks towering straight above the train.","Watch the vegetation change as you descend from Andes to the edge of the Amazon!","Spectacled bears — the inspiration for Paddington Bear — live in these cloud forests.","The cloud forest here is one of the most biodiverse ecosystems on the planet.","Machu Picchu was only connected to Cusco by rail in 1948 — before that, only reachable on foot."] },
-    { time:"17:02", end:"18:30", name:"Arrive and check in — Casa Andina", desc:"Ask hotel about Ministry of Culture opening time tomorrow. Request early May 3 breakfast.", type:"logistics", place:"Aguas Calientes", facts:["Aguas Calientes means Hot Waters in Spanish — named after the natural hot springs here.","The town only has about 3,000 permanent residents but receives over 1 million tourists per year!","There are no roads to Aguas Calientes — the only way in is by train or a 2-day hike.","The town sits inside a deep gorge with mountains rising 2,000m on both sides.","The Urubamba River rushing through town is one of the fastest rivers in Peru.","Aguas Calientes was almost completely destroyed by a mudslide in 2010 and rebuilt from scratch.","The town square has a statue of Pachacutec — the Inca emperor who built Machu Picchu.","Every shop, hotel, and restaurant in town exists entirely because of Machu Picchu.","The natural hot springs here reach 40C — perfect for sore legs after hiking!","At night, the mountains surrounding the town are completely dark — incredible stars overhead."] },
+    { time:"12:30", end:"15:07", name:"Drive to Ollantaytambo", desc:"Private van ~1.5 hrs. Drop checked bag at PeruRail free storage. Quick lunch in town.", type:"logistics", place:"Sacred Valley", facts:["The Sacred Valley stretches 60km between Cusco and Machu Picchu along the Urubamba River.","The Incas grew over 3,000 varieties of potato in the Sacred Valley — yes, 3,000!","The valley sits 600m lower than Cusco, so the air feels noticeably easier to breathe here.","Incan farmers built terraces called andenes to farm steep hillsides — some are still used today.","The Urubamba River was called Willkamayu meaning Sacred River in Quechua.","The Sacred Valley was chosen by the Incas for its perfect farming climate and spiritual energy.","You might spot condors soaring above the valley — they have a wingspan of up to 3.2 meters!","Local women still wear traditional colorful clothing called polleras every day.","The valley produces the best corn in Peru — the kernels are giant compared to regular corn.","Archaeologists are still discovering new Inca ruins hidden in the mountains of the Sacred Valley."] },
+    { time:"15:07", end:"15:37", name:"Board train at Ollantaytambo", desc:"PeruRail Vistadome Observatory 603. Be on the platform 30 min before departure.", type:"logistics", place:"Ollantaytambo", facts:["Ollantaytambo is the only Inca town in Peru still inhabited in original Inca buildings!","The fortress was one of the few places where the Incas successfully defeated the Spanish conquistadors.","The town was built in the shape of a maize cob — corn was sacred to the Incas.","Water channels built by the Incas 600 years ago still run through the streets today.","The massive stone blocks were quarried from a mountain 6km away and across the river!","Ollantaytambo means Resting place of Ollanta — named after a legendary Inca general.","The town has had running water since Inca times — one of the oldest water systems in the Americas.","Local kids play football in the same plaza where Inca ceremonies were held 500 years ago.","The ruins were a filming location for the movie The Motorcycle Diaries.","You can still see original Inca walls lining the narrow streets — the Spanish built on top of them."] },
+    { time:"15:37", end:"17:02", name:"Train to Aguas Calientes", desc:"Panoramic cloud forest journey. Arrives Machu Picchu Pueblo station 17:02.", type:"afternoon", place:"Cloud Forest Railway", facts:["The train descends over 1,500m in just 1.5 hours — one of the most dramatic rail journeys on Earth!","The cloud forest is home to over 300 species of orchid.","This valley is so narrow that the train tracks were built right next to the rushing Urubamba River.","The cloud forest produces its own rain — clouds get trapped by the mountains constantly.","You might spot a torrent duck on the river rocks — one of the few birds that swim in rapids.","The Vistadome glass roof lets you see the mountain peaks towering straight above the train.","Watch the vegetation change as you descend from Andes to the edge of the Amazon!","Spectacled bears — the inspiration for Paddington Bear — live in these cloud forests.","The cloud forest here is one of the most biodiverse ecosystems on the planet.","Machu Picchu was only connected to Cusco by rail in 1948 — before that, only reachable on foot."] },
+    { time:"17:02", end:"18:30", name:"Arrive and check in — Casa Andina", desc:"Ask hotel about Ministry of Culture opening time tomorrow. Request early May 3 breakfast.", type:"logistics", place:"Aguas Calientes", facts:["Aguas Calientes means Hot Waters in Spanish — named after the natural hot springs here.","The town only has about 3,000 permanent residents but receives over 1 million tourists per year!","There are no roads to Aguas Calientes — the only way in is by train or a 2-day hike.","The town sits inside a deep gorge with mountains rising 2,000m on both sides.","The Urubamba River rushing through town is one of the fastest rivers in Peru.","Aguas Calientes was almost completely destroyed by a mudslide in 2010 and rebuilt from scratch.","The town square has a statue of Pachacutec — the Inca emperor who built Machu Picchu.","Every shop, hotel, and restaurant in town exists entirely because of Machu Picchu.","The natural hot springs here reach 40C — perfect for sore legs after hiking!","At night the mountains surrounding the town are completely dark — incredible stars overhead."] },
     { time:"18:30", end:"19:30", name:"Ministry of Culture — Chance #1", desc:"Check if office still open on Av. Pachacutec. If open, buy Circuit 2 tickets for May 3 now.", type:"priority", place:"Aguas Calientes", facts:["Machu Picchu only allows 4,044 visitors per day — it used to be unlimited and the site was being damaged!","The Ministry of Culture controls all Machu Picchu tickets to protect the ancient stones.","Circuit 2 is the most popular route — it includes the iconic viewpoint seen on every postcard.","Tickets are personal — your name is printed on each one and must match your passport exactly.","The site was divided into circuits in 2019 to reduce crowding at specific viewpoints.","Getting tickets in person in Aguas Calientes is the secret move most tourists do not know about.","Peak season in May means tickets can run out — being first in line on May 2 morning is essential.","Each circuit takes 2-4 hours depending on your pace and how many photos you take!","Machu Picchu gets about 1.5 million visitors per year — managed carefully to protect the stones.","The ticket price has increased significantly in recent years to fund conservation of the site."] },
-    { time:"19:30", end:"21:00", name:"Dinner — TUNAWA Andean Fusion", desc:"Rated 4.8. Laguna ceviche, pollo saltado. 5-min walk from plaza. Early night!", type:"evening", place:"Aguas Calientes", facts:["Aguas Calientes means Hot Waters in Spanish — named after the natural hot springs here.","The town only has about 3,000 permanent residents but receives over 1 million tourists per year!","There are no roads to Aguas Calientes — the only way in is by train or a 2-day hike.","The Urubamba River rushing through town is one of the fastest rivers in Peru.","Aguas Calientes was almost completely destroyed by a mudslide in 2010 and rebuilt from scratch.","Every shop, hotel, and restaurant in town exists entirely because of Machu Picchu.","The natural hot springs here reach 40C — perfect for sore legs after hiking!","At night, the mountains surrounding the town are completely dark — incredible stars overhead.","The town square has a statue of Pachacutec — the Inca emperor who built Machu Picchu.","You are less than 8km from one of the Seven Wonders of the World right now!"] },
-    { time:"21:00", end:"23:59", name:"Sleep — alarm set for 5:30am", desc:"Lower altitude means great sleep for everyone.", type:"logistics", place:"Aguas Calientes", facts:["Sleeping at 2,040m altitude is much easier than Cusco at 3,400m — you chose wisely!","Your body repairs itself during sleep — especially important before a big mountain hike tomorrow.","The sound of the Urubamba River creates a natural white noise — great for sleeping.","Machu Picchu at sunrise has misty clouds rolling through the ruins — the most magical sight in South America.","The early bus queue starts at 5am — being among the first on the mountain means fewer crowds.","Tomorrow is the big day — Machu Picchu at sunrise on a birthday! Rest well.","The temperature drops significantly at night in the gorge — use all the hotel blankets!","Machu Picchu faces east so the sunrise hits the ruins directly from the front — stunning golden light.","The Incas deliberately oriented Machu Picchu to align with the rising sun during the solstice.","You are less than 8km from one of the Seven Wonders of the World right now!"] }
+    { time:"19:30", end:"21:00", name:"Dinner — TUNAWA Andean Fusion", desc:"Rated 4.8. Laguna ceviche, pollo saltado. 5-min walk from plaza. Early night!", type:"evening", place:"Aguas Calientes", facts:["Aguas Calientes means Hot Waters in Spanish — named after the natural hot springs here.","The town only has about 3,000 permanent residents but receives over 1 million tourists per year!","There are no roads to Aguas Calientes — the only way in is by train or a 2-day hike.","The Urubamba River rushing through town is one of the fastest rivers in Peru.","Aguas Calientes was almost completely destroyed by a mudslide in 2010 and rebuilt from scratch.","Every shop, hotel, and restaurant in town exists entirely because of Machu Picchu.","The natural hot springs here reach 40C — perfect for sore legs after hiking!","At night the mountains surrounding the town are completely dark — incredible stars overhead.","The town square has a statue of Pachacutec — the Inca emperor who built Machu Picchu.","You are less than 8km from one of the Seven Wonders of the World right now!"] },
+    { time:"21:00", end:"23:59", name:"Sleep — alarm set for 5:30am", desc:"Lower altitude means great sleep for everyone.", type:"logistics", place:"Aguas Calientes", facts:["Sleeping at 2,040m altitude is much easier than Cusco at 3,400m — you chose wisely!","Your body repairs itself during sleep — especially important before a big mountain hike tomorrow.","The sound of the Urubamba River creates a natural white noise — great for sleeping.","Machu Picchu at sunrise has misty clouds rolling through the ruins — the most magical sight in South America.","The early bus queue starts at 5am — being among the first on the mountain means fewer crowds.","Tomorrow is the big day — Machu Picchu at sunrise on a birthday! Rest well.","The temperature drops significantly at night in the gorge — use all the hotel blankets!","Machu Picchu faces east so the sunrise hits the ruins directly — stunning golden light.","The Incas deliberately oriented Machu Picchu to align with the rising sun during the solstice.","You are less than 8km from one of the Seven Wonders of the World right now!"] }
   ],
   "2026-05-02": [
     { time:"05:00", end:"05:30", name:"Guide meets at hotel", desc:"TreXperience guide accompanies family to the Ministry of Culture queue.", type:"priority", place:"Aguas Calientes", facts:["Licensed Machu Picchu guides must pass a rigorous government exam — they know every stone!","Your TreXperience guide speaks English and Quechua — the original language of the Incas.","A good guide transforms Machu Picchu from old rocks to a living breathing Inca city story.","Guides are legally required inside Machu Picchu — solo exploration is not permitted.","Many guides are descendants of the Quechua people who built Machu Picchu.","TreXperience guides are trained to do Inca treasure hunts for kids — your 8-year-old will love it!","Your guide knows exactly which viewpoints get the best photos at which times of day.","A bilingual guide costs about the same as a nice dinner — and is worth 10x more.","Your guide today will also help you navigate the Ministry of Culture — that alone is priceless.","The best guides bring snacks, know all the shortcuts, and make sure no one gets left behind."] },
@@ -238,7 +128,7 @@ var SCHEDULE = {
     { time:"09:30", end:"10:30", name:"Free time inside the citadel", desc:"Sit, breathe, let the kid explore near the llamas. No re-entry once you exit — plan bathroom breaks.", type:"afternoon", place:"Machu Picchu", facts:["The classic postcard photo spot is near the Guardian House — your guide will take you there.","Look for the Temple of the Sun — its windows align perfectly with the winter solstice sunrise.","The Intihuatana stone was used by Inca priests to tie the sun during the solstice ceremonies.","Machu Picchu has its own microclimate — it can be sunny at the entrance and rainy at the far end!","The terraces were sophisticated drainage systems to prevent landslides — not just decorative.","More than 30% of the effort building Machu Picchu went underground — drainage and foundations.","The Temple of the Condor has a rock shaped exactly like a condor in flight — mind-blowing!","Clouds roll in most afternoons so morning entry always gives the clearest skies and best photos.","The view from the Guardian House is the exact image on every Machu Picchu postcard.","Sitting quietly for 5 minutes inside Machu Picchu and just breathing it in — unforgettable."] },
     { time:"10:30", end:"12:00", name:"Bus back to Aguas Calientes", desc:"Return to Casa Andina. Shower and change. Leave main bags at reception for storage.", type:"logistics", place:"Aguas Calientes", facts:["The bus ride back down is faster than going up — the driver knows every curve by heart!","After 3-4 hours at Machu Picchu your legs will feel it — the thermal baths are perfectly timed.","Casa Andina will store your bags all day after checkout — no need to lug them to the baths.","The temperature in Aguas Calientes feels warm after the cool mountain air of Machu Picchu.","Today is May 3rd — birthday + Machu Picchu + thermal baths + birthday dinner in Cusco. What a day!","The Urubamba River sounds especially soothing after the excitement of the mountain this morning.","Aguas Calientes has a little chocolate shop near the plaza — outstanding Peruvian dark chocolate.","A cold glass of chicha morada after Machu Picchu is perfection.","Take a moment to celebrate — you just did Machu Picchu at sunrise on a birthday. Extraordinary.","The train back through the cloud forest this afternoon will feel completely different after this morning."] },
     { time:"12:00", end:"14:00", name:"Thermal baths — birthday recovery", desc:"Sore legs, happy hearts. 15 soles. Kid splashes, adults decompress. Best feeling of the trip.", type:"birthday", place:"Aguas Calientes Hot Springs", facts:["The thermal baths after a Machu Picchu morning are one of the best feelings in all of travel!","Warm water at 40C relaxes muscles that have been climbing stone steps since 6am.","The mineral content of the springs includes magnesium and calcium — both great for muscle recovery.","Local Quechua people have soaked in these springs for centuries as a healing ritual.","The springs are fed by underground volcanic activity in the Andes mountain range.","Today is the birthday girl turn to relax — the thermal baths are the perfect birthday treat.","Children love the thermal baths — warm water, dramatic setting, and multiple pools.","After the thermal baths most people feel ready for a proper meal and a long comfortable journey home.","The sound of the waterfall feeding one of the pools creates a natural spa soundtrack.","Soaking in natural hot springs at the base of the Andes — this does not happen every birthday!"] },
-    { time:"14:00", end:"19:30", name:"Return train + taxi to Cusco", desc:"Pick up stored bags from Casa Andina reception. Board return train. TreXperience private taxi waiting at Ollantaytambo to drive to Cusco (~1.5 hrs).", type:"logistics", place:"Cloud Forest to Cusco", facts:["The return train journey feels completely different — you are leaving as someone who has seen Machu Picchu!","The cloud forest looks magical in the afternoon light — golden rays cut through the mist.","As the train climbs back toward the Sacred Valley the vegetation changes from jungle to Andean grasses.","Your TreXperience taxi driver will be waiting at Ollantaytambo — no waiting, direct to your hotel.","The 1.5 hour drive back to Cusco passes through the Sacred Valley as the sun sets on the Andes.","Arriving in Cusco tonight means sleeping at 3,400m altitude — drink lots of water.","The birthday dinner at Morena Kitchen awaits — window table overlooking the illuminated Plaza de Armas.","Cusco at night is magical — the plaza is lit up and the energy of the city is alive and warm.","Today has been: 4:30am wake-up, Machu Picchu at sunrise, thermal baths, train, taxi, birthday dinner. Legendary.","The Plaza de Armas in Cusco was the ceremonial heart of the Inca Empire — 500 years of history."] },
+    { time:"14:00", end:"19:30", name:"Return train + taxi to Cusco", desc:"Pick up stored bags from Casa Andina reception. Board return train. TreXperience private taxi waiting at Ollantaytambo to drive to Cusco (~1.5 hrs).", type:"logistics", place:"Cloud Forest to Cusco", facts:["The return train journey feels completely different — you are leaving as someone who has seen Machu Picchu!","The cloud forest looks magical in the afternoon light — golden rays cut through the mist.","As the train climbs back the vegetation changes from jungle to Andean grasses.","Your TreXperience taxi driver will be waiting at Ollantaytambo — no waiting, direct to your hotel.","The 1.5 hour drive back to Cusco passes through the Sacred Valley as the sun sets on the Andes.","Arriving in Cusco tonight means sleeping at 3,400m altitude — drink lots of water.","The birthday dinner at Morena Kitchen awaits — window table overlooking the illuminated Plaza de Armas.","Cusco at night is magical — the plaza is lit up and the energy of the city is alive and warm.","Today has been: 4:30am wake-up, Machu Picchu at sunrise, thermal baths, train, taxi, birthday dinner. Legendary.","The Plaza de Armas in Cusco was the ceremonial heart of the Inca Empire — 500 years of history."] },
     { time:"19:30", end:"20:30", name:"Arrive Cusco + hotel check-in", desc:"TreXperience driver drops at Cusco hotel. Freshen up for the birthday dinner.", type:"logistics", place:"Cusco", facts:["Cusco at night is one of the most beautiful cities in South America — warm lights on colonial stone walls.","The Plaza de Armas at night is surrounded by illuminated colonial buildings built on Inca foundations.","Cusco sits in a natural bowl surrounded by mountains — at night the city lights reflect off hillsides.","The altitude at 3,400m means you should drink water and avoid alcohol on your first night back.","The famous 12-angled stone in Hatunrumiyoc Street fits perfectly with all 12 surrounding stones.","Cusco has over 200 colonial churches built by the Spanish — many on top of original Inca temples.","The city has been continuously inhabited for over 3,000 years — one of the oldest cities in the Americas.","You can literally see Inca stonework on the ground floors of colonial buildings throughout the city.","Tonight you celebrate a birthday in the former capital of the greatest empire in the Americas.","The candlelit streets of Cusco historic center at night are genuinely magical."] },
     { time:"20:30", end:"22:30", name:"Birthday dinner — Morena Kitchen", desc:"Window table overlooking illuminated Plaza de Armas. Birthday decoration on the table. Reserved.", type:"birthday", place:"Cusco Plaza de Armas", facts:["The Plaza de Armas in Cusco was called Huacaypata by the Incas — meaning Place of Weeping for ceremonies.","The two churches on the plaza were both built on top of Inca palaces.","La Catedral took 100 years to build and contains the famous Last Supper painting with guinea pig!","The plaza was the location of the most important Inca ceremonies, festivals, and political events.","Peruvian trucha (trout) is some of the freshest fish you will ever eat — rivers are ice-cold mountain water.","Morena Kitchen is known for innovative takes on classic Peruvian dishes using local ingredients.","A birthday dinner with a Plaza de Armas view is one of the most memorable restaurant experiences in Peru.","The lights of the plaza in the evening illuminate the cathedral in golden light — incredible backdrop.","Today has been one of the most extraordinary days of your family life. Happy birthday!","Cheers to a birthday at Machu Picchu — there are very few more epic ways to celebrate."] }
   ],
@@ -260,9 +150,9 @@ var SCHEDULE = {
   ],
   "2026-05-06": [
     { time:"08:00", end:"09:00", name:"Breakfast + leave bags at hotel", desc:"All luggage stored at reception. Light daypack only. ~6 hrs in the city.", type:"morning", place:"Bogota, Colombia", facts:["Bogota breakfast culture is incredible — try a changua (milk soup with egg) or an arepa con queso!","Colombian coffee at breakfast in Colombia is the real deal — some of the world finest beans.","Bogota is a city of 8 million at 2,600m altitude — traffic can be heavy so Uber is always smart.","Today you have about 6-7 hours to explore before the evening flight home to Chicago.","The Hilton Garden Inn holds luggage all day after checkout — essential for a transit-day city visit.","The famous Bogota Gold Museum (Museo del Oro) is just 20 minutes from the hotel.","Bogota street art scene is internationally famous — La Candelaria has murals on almost every wall.","Colombia national sport is cycling — Colombians have won the Tour de France multiple times!","The city is divided into economic zones 1-6 — tourists mainly visit zones 1-4.","Bogota receives about 4 million tourists per year — one of South America fastest-growing destinations."] },
-    { time:"09:00", end:"11:30", name:"Monserrate cable car", desc:"Panoramic Bogota views from 3,150m. Priority pass purchased. Cable car up, funicular down.", type:"morning", place:"Cerro Monserrate, Bogota", facts:["Monserrate peak stands at 3,152m — from the top you see all of Bogota spread across the Sabana.","The white church at the top (El Senor Caido) is one of the most visited pilgrimage sites in Colombia.","The cable car covers 854m of elevation in about 5 minutes — one of the most thrilling urban cable car rides.","On a clear day you can see the entire city of Bogota from Monserrate — 8 million people below!","The funicular (rack railway) that runs parallel to the cable car has been operating since 1929.","Monserrate is visited by over 3 million people per year — buy the priority pass to skip the 2-hour queue!","The peak is often in the clouds — if it is clear in the morning go immediately! Clouds roll in by noon.","Local vendors at the top sell fresh strawberries with cream — a Bogota tradition at Monserrate.","The view shows the Andes mountain range extending in both directions — you can see forever on a clear day.","Your 8-year-old will love the cable car ride — the view looking back over the city is breathtaking."] },
-    { time:"11:30", end:"12:00", name:"Travel to La Candelaria", desc:"Uber from Monserrate to the historic district (~20 min). Good time to grab a quick snack.", type:"logistics", place:"Bogota", facts:["La Candelaria is Bogota historic heart — founded by the Spanish in 1538, one of the oldest neighborhoods in the Americas.","The neighborhood sits at the foot of Monserrate mountain — dramatic mountains in the backdrop of every photo.","Uber in Bogota is safe, reliable, and very affordable compared to taxis.","The streets of La Candelaria are lined with colonial buildings painted in vivid yellow, red, and blue.","This neighborhood is home to most of Bogota major museums: Gold Museum, Botero Museum, National Museum.","Street food vendors in La Candelaria sell empanadas de pipian (pumpkin seed filling) — a Bogota specialty.","The gold museum in La Candelaria has 55,000 pre-Colombian gold pieces — the most gold artifacts in one museum.","Fernando Botero, Colombia most famous artist, donated 123 sculptures and paintings to Bogota — many are here.","The streets of La Candelaria are safe during the day when busy.","Bogota receives about 4 million tourists per year — one of South America fastest-growing destinations."] },
-    { time:"12:00", end:"14:30", name:"La Candelaria historic district", desc:"Colonial streets, Bolivar Plaza, Chorro de Quevedo. Street performers, chicha vendors.", type:"afternoon", place:"La Candelaria, Bogota", facts:["Plaza Bolivar is the heart of La Candelaria — surrounded by the Capitol, City Hall, Supreme Court, Cathedral.","Simon Bolivar liberated Colombia, Venezuela, Ecuador, Peru, and Bolivia from Spanish rule — all on horseback.","The pigeons in Plaza Bolivar are legendary — locals say there are more pigeons than people in Bogota!","Chorro de Quevedo plaza is where Bogota was officially founded on August 6, 1538.","The street art murals in La Candelaria are world-famous — some cover entire 10-story buildings.","Colombian empanadas are different from Peruvian ones — fried, filled with meat or chicken, served with hot sauce.","The National Museum of Colombia is the oldest museum in Colombia.","Botero Museum is completely free and contains original paintings by Colombia most famous artist.","Street performers in La Candelaria include tango dancers, magicians, and traditional cumbia drummers.","After La Candelaria you will have seen: Machu Picchu, Cusco, Aguas Calientes, Bogota — what a trip!"] },
+    { time:"09:00", end:"11:30", name:"Monserrate cable car", desc:"Panoramic Bogota views from 3,150m. Priority pass purchased. Cable car up, funicular down.", type:"morning", place:"Cerro Monserrate, Bogota", facts:["Monserrate peak stands at 3,152m — from the top you see all of Bogota spread across the Sabana.","The white church at the top is one of the most visited pilgrimage sites in Colombia.","The cable car covers 854m of elevation in about 5 minutes — one of the most thrilling urban cable car rides.","On a clear day you can see the entire city of Bogota from Monserrate — 8 million people below!","The funicular (rack railway) that runs parallel to the cable car has been operating since 1929.","Monserrate is visited by over 3 million people per year — buy the priority pass to skip the 2-hour queue!","The peak is often in the clouds — if it is clear in the morning go immediately! Clouds roll in by noon.","Local vendors at the top sell fresh strawberries with cream — a Bogota tradition at Monserrate.","The view shows the Andes mountain range extending in both directions — you can see forever on a clear day.","Your 8-year-old will love the cable car ride — the view looking back over the city is breathtaking."] },
+    { time:"11:30", end:"12:00", name:"Travel to La Candelaria", desc:"Uber from Monserrate to the historic district (~20 min). Good time to grab a quick snack.", type:"logistics", place:"Bogota", facts:["La Candelaria is Bogota historic heart — founded by the Spanish in 1538, one of the oldest neighborhoods in the Americas.","The neighborhood sits at the foot of Monserrate mountain — dramatic mountains in every photo.","Uber in Bogota is safe, reliable, and very affordable compared to taxis.","The streets of La Candelaria are lined with colonial buildings painted in vivid yellow, red, and blue.","This neighborhood is home to most of Bogota major museums: Gold Museum, Botero Museum, National Museum.","Street food vendors in La Candelaria sell empanadas de pipian (pumpkin seed filling) — a Bogota specialty.","The gold museum in La Candelaria has 55,000 pre-Colombian gold pieces — the most gold artifacts in one museum.","Fernando Botero donated 123 sculptures and paintings to Bogota — many are here.","The streets of La Candelaria are safe during the day when busy.","Bogota receives about 4 million tourists per year — one of South America fastest-growing destinations."] },
+    { time:"12:00", end:"14:30", name:"La Candelaria historic district", desc:"Colonial streets, Bolivar Plaza, Chorro de Quevedo. Street performers, chicha vendors.", type:"afternoon", place:"La Candelaria, Bogota", facts:["Plaza Bolivar is the heart of La Candelaria — surrounded by the Capitol, City Hall, Supreme Court, Cathedral.","Simon Bolivar liberated Colombia, Venezuela, Ecuador, Peru, and Bolivia from Spanish rule — all on horseback.","The pigeons in Plaza Bolivar are legendary — locals say there are more pigeons than people in Bogota!","Chorro de Quevedo plaza is where Bogota was officially founded on August 6, 1538.","The street art murals in La Candelaria are world-famous — some cover entire 10-story buildings.","Colombian empanadas are different from Peruvian ones — fried, filled with chicken, served with hot sauce.","The National Museum of Colombia is the oldest museum in Colombia.","Botero Museum is completely free and contains original paintings by Colombia most famous artist.","Street performers in La Candelaria include tango dancers, magicians, and traditional cumbia drummers.","After La Candelaria you will have seen: Machu Picchu, Cusco, Aguas Calientes, Bogota — what a trip!"] },
     { time:"14:30", end:"17:00", name:"Return to hotel + collect bags", desc:"Uber back to Hilton. Collect luggage. Head to El Dorado airport.", type:"logistics", place:"Bogota", facts:["El Dorado Airport is Colombia busiest airport — allow 3 full hours for international check-in.","The airport has excellent duty-free shopping: Colombian coffee, emeralds, rum, and handicrafts.","Colombian emeralds are considered the finest in the world — 70-90% of global emerald production comes from Colombia.","Juan Valdez coffee shop in the airport sells fresh-brewed Colombian single-origin coffee.","AV262 will fly you back to Chicago overnight — the same Avianca you flew down on.","You are heading home from one of the most incredible travel itineraries possible in South America.","The whole family has now seen: Cusco, Sacred Valley, Aguas Calientes, Machu Picchu, and Bogota.","Buy Colombian ground coffee at the airport — it makes an amazing souvenir that people actually use.","Three countries in one trip: USA, Peru, Colombia. With an 8-year-old. On a birthday. Outstanding.","The flight back to Chicago will feel very different from the excited anticipation of the outbound journey."] },
     { time:"17:00", end:"20:00", name:"El Dorado Airport — AV262", desc:"Arrive 3 hrs before departure. Buy Colombian coffee at duty-free!", type:"logistics", place:"El Dorado Airport, Bogota", facts:["El Dorado Airport is named after the legendary lost city of gold that Spanish conquistadors hunted for centuries.","The airport serves about 35 million passengers per year — one of the busiest in Latin America.","Juan Valdez coffee (Colombia iconic brand) has shops throughout the airport.","Colombian emeralds sold in airport shops are certified conflict-free.","Avianca flight AV262 will arrive in Chicago — completing the full loop: ORD to BOG to CUZ to BOG to ORD.","The overnight flight to Chicago will cross the Gulf of Mexico and the southeastern United States.","The trip cost, memories, and experiences will be talked about in your family for the rest of your lives.","The 8-year-old has now seen: a Wonder of the World, cloud forests, Andean ruins, and a colonial capital.","Safe travels home — what an extraordinary week. Peru and Colombia equals unforgettable.","You are flying home from South America after one of the most incredible family trips possible."] },
     { time:"20:00", end:"23:59", name:"AV262 — Bogota to Chicago (ORD)", desc:"Homebound. Trip complete — Machu Picchu on a birthday, Peru + Bogota. Unforgettable.", type:"logistics", place:"Heading Home", facts:["You are flying home from South America after one of the most incredible family trips possible.","Total distance traveled this week: approximately 12,000 km — nearly halfway around the Earth!","You have been to: Chicago, Bogota, Cusco, Ollantaytambo, Aguas Calientes, Machu Picchu, Cusco, Bogota, Chicago.","Your 8-year-old has stood at a Wonder of the World, ridden a panoramic train, and soaked in natural hot springs.","The birthday girl celebrated at Machu Picchu at sunrise — there are very few birthdays more epic than that.","Machu Picchu, Qorikancha, Sacsayhuaman, Ollantaytambo, Monserrate — 5 extraordinary historical sites in 6 days.","You ate trucha andina, aji de gallina, lomo saltado, Andean ceviche, and Colombian empanadas.","You rode the Vistadome Observatory train, a cable car over Bogota, and a bus with 13 hairpin turns.","The altitude challenges, the 4:30am wake-up, the llamas, the thermal baths — all part of the story now.","Welcome home, family. That was truly extraordinary. Start planning the next one!"] }
@@ -270,464 +160,243 @@ var SCHEDULE = {
 };
 
 var DAY_LABELS = {
-  "2026-05-01": "Day 1 — Arrival in Peru",
-  "2026-05-02": "Day 2 — Ticket Day, Aguas Calientes",
-  "2026-05-03": "Day 3 — Machu Picchu Birthday",
-  "2026-05-04": "Day 4 — Cusco Exploration",
-  "2026-05-05": "Day 5 — Departing Peru",
-  "2026-05-06": "Day 6 — Bogota and Home"
+  "2026-05-01":"Day 1 — Arrival in Peru",
+  "2026-05-02":"Day 2 — Ticket Day, Aguas Calientes",
+  "2026-05-03":"Day 3 — Machu Picchu Birthday",
+  "2026-05-04":"Day 4 — Cusco Exploration",
+  "2026-05-05":"Day 5 — Departing Peru",
+  "2026-05-06":"Day 6 — Bogota and Home"
 };
 
 var TYPE_CONFIG = {
-  logistics: { label:"Transit",     cls:"tag-logistics" },
-  morning:   { label:"Morning",     cls:"tag-morning"   },
-  afternoon: { label:"Afternoon",   cls:"tag-afternoon" },
-  evening:   { label:"Evening",     cls:"tag-evening"   },
-  birthday:  { label:"Birthday",    cls:"tag-birthday"  },
-  priority:  { label:"Priority",    cls:"tag-priority"  }
+  logistics:{label:"Transit",cls:"tag-logistics"},
+  morning:{label:"Morning",cls:"tag-morning"},
+  afternoon:{label:"Afternoon",cls:"tag-afternoon"},
+  evening:{label:"Evening",cls:"tag-evening"},
+  birthday:{label:"Birthday",cls:"tag-birthday"},
+  priority:{label:"Priority",cls:"tag-priority"}
 };
 
-// ─── UTILITIES ────────────────────────────────────────────────────────────────
-function toMins(t) {
-  var parts = t.split(":"); return parseInt(parts[0]) * 60 + parseInt(parts[1]);
-}
+var DINNERS = {
+  "2026-05-01":{name:"TUNAWA Andean Fusion",tagline:"Rated 4.8 · Contemporary Peruvian fusion",desc:"Rivals Lima finest establishments with innovative dishes and creative presentations. River views, refined service, the most technically impressive kitchen in Aguas Calientes.",pills:["~$35-50/person","River views","Chicken &amp; fish only"],must:"Laguna ceviche with passion fruit &middot; Aji de gallina ravioli (chicken) &middot; Grilled trucha",link:true},
+  "2026-05-02":{name:"Ayahuasca Grill",tagline:"Rated 4.9 · Hidden gem uphill from the tourist strip",desc:"Walk uphill away from the train station crowd to find this local favourite. Bohemian atmosphere, the owner sometimes performs live, and the best trout and chicken in town.",pills:["~$15-25/person","Chicken &amp; fish","Hidden gem"],must:"Trucha a la parrilla &middot; Pollo saltado &middot; Chicha morada",link:false},
+  "2026-05-03":{name:"Morena Peruvian Kitchen",tagline:"Birthday dinner &middot; Plaza de Armas, Cusco &middot; Reserved",desc:"Window table overlooking the illuminated Plaza de Armas. Famous for trucha tacos and exceptional fish dishes. Birthday decoration arranged on the table. The finest dinner of the trip.",pills:["~$30-45/person","Reservation confirmed","Birthday dinner"],must:"Trucha tacos &middot; Ceviche de trucha &middot; Pollo a la brasa",link:false},
+  "2026-05-04":{name:"Chull's Peruvian Cuisine",tagline:"Rated 4.9 · Farewell Cusco dinner",desc:"Cozy hidden courtyard restaurant, the perfect Cusco send-off. Known for creative takes on Peruvian classics. Order Chicha Morada for the whole table.",pills:["~$15-25/person","Chicken &amp; fish","Courtyard"],must:"Aji de gallina (creamy chicken) &middot; Trucha andina &middot; Chicha Morada for the kid",link:false},
+  "2026-05-05":{name:"Keep it light — travel day",tagline:"Long travel day to Bogota",desc:"Light lunch near the Plaza de Armas before heading to the airport. Grab snacks at Cusco airport for the flight. No heavy meals today.",pills:["Light meal","Travel day"],must:"Soup &middot; Sandwich &middot; Fresh juice &middot; Keep it simple",link:false},
+  "2026-05-06":{name:"La Candelaria local spots",tagline:"Bogota &middot; Colombian flavours",desc:"Explore La Candelaria historic district at lunch. Street food vendors and local restaurants serve arepas, empanadas, and fresh chicken dishes.",pills:["$10-20/person","Colombian cuisine","No reservation"],must:"Empanadas de pipian &middot; Ajiaco (chicken soup) &middot; Fresh lulo juice",link:false}
+};
 
-function getPeruTime() {
-  return new Date(new Date().toLocaleString("en-US", { timeZone: "America/Lima" }));
-}
+function toMins(t){var p=t.split(":");return parseInt(p[0])*60+parseInt(p[1]);}
+function getPeruTime(){return new Date(new Date().toLocaleString("en-US",{timeZone:"America/Lima"}));}
+function getTodayKey(){var d=getPeruTime();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+function fmtCountdown(ms){var s=Math.floor(ms/1000);return{d:Math.floor(s/86400),h:Math.floor((s%86400)/3600),m:Math.floor((s%3600)/60),s:s%60};}
+function revealFact(i){var el=document.getElementById("fact-"+i);if(el)el.classList.toggle("revealed");}
 
-function getTodayKey() {
-  var d = getPeruTime();
-  return d.getFullYear() + "-" +
-    String(d.getMonth() + 1).padStart(2, "0") + "-" +
-    String(d.getDate()).padStart(2, "0");
-}
-
-function fmtCountdown(ms) {
-  var s = Math.floor(ms / 1000);
-  return {
-    d: Math.floor(s / 86400),
-    h: Math.floor((s % 86400) / 3600),
-    m: Math.floor((s % 3600) / 60),
-    s: s % 60
-  };
-}
-
-function revealFact(i) {
-  var el = document.getElementById("fact-" + i);
-  if (el) el.classList.toggle("revealed");
-}
-
-// ─── HTML BUILDERS ───────────────────────────────────────────────────────────
-function buildFlightCard(from, fromCity, to, toCity, flightNum, duration, departTime, arriveTime, date, label) {
-  return '<div class="flight-card">' +
-    '<div class="flight-label">' + label + '</div>' +
-    '<div class="flight-row">' +
-      '<div><div class="airport-code">' + from + '</div><div class="airport-city">' + fromCity + '</div></div>' +
-      '<div class="flight-mid"><div class="flight-num">' + flightNum + '</div><div class="flight-icon">&#9992;</div><div class="flight-dur">' + duration + '</div></div>' +
-      '<div style="text-align:right"><div class="airport-code">' + to + '</div><div class="airport-city">' + toCity + '</div></div>' +
-    '</div>' +
-    '<div class="flight-footer">' +
-      '<span class="flight-time-label">Departs <span class="flight-time-val">' + departTime + '</span></span>' +
-      '<span class="flight-time-label">' + date + '</span>' +
-      '<span class="flight-time-label">Arrives <span class="flight-time-val">' + arriveTime + '</span></span>' +
-    '</div>' +
+function buildFlightCard(from,fromCity,to,toCity,fnum,dur,dep,arr,date,label){
+  return '<div class="flight-card">'+
+    '<div class="flight-label">'+label+'</div>'+
+    '<div class="flight-row">'+
+      '<div><div class="airport-code">'+from+'</div><div class="airport-city">'+fromCity+'</div></div>'+
+      '<div class="flight-mid"><div class="flight-num">'+fnum+'</div><div class="flight-icon">&#9992;</div><div class="flight-dur">'+dur+'</div></div>'+
+      '<div style="text-align:right"><div class="airport-code">'+to+'</div><div class="airport-city">'+toCity+'</div></div>'+
+    '</div>'+
+    '<div class="flight-footer">'+
+      '<span class="flight-time-label">Departs <span class="flight-time-val">'+dep+'</span></span>'+
+      '<span class="flight-time-label">'+date+'</span>'+
+      '<span class="flight-time-label">Arrives <span class="flight-time-val">'+arr+'</span></span>'+
+    '</div>'+
   '</div>';
 }
 
-function buildFactsCard(item) {
-  if (!item || !item.facts || !item.facts.length) return "";
-  var html = '<div class="facts-card">' +
-    '<div class="facts-header">' +
-      '<span class="facts-icon">&#128161;</span>' +
-      '<div><div class="facts-title">Did you know?</div>' +
-      '<div class="facts-place">' + (item.place || "") + '</div></div>' +
-    '</div>';
-  for (var i = 0; i < item.facts.length; i++) {
-    html += '<div class="fact-item" id="fact-' + i + '" onclick="revealFact(' + i + ')">' +
-      '<div class="fact-num">' + (i + 1) + '</div>' +
-      '<div class="fact-text">' + item.facts[i] + '</div>' +
-    '</div>';
+function buildFactsCard(item){
+  if(!item||!item.facts||!item.facts.length)return"";
+  var html='<div class="facts-card">'+
+    '<div class="facts-header"><span class="facts-icon">&#128161;</span>'+
+    '<div><div class="facts-title">Did you know?</div><div class="facts-place">'+(item.place||"")+'</div></div></div>'+
+    '<div class="reveal-hint">Tap any fact to highlight it &#10024;</div>';
+  for(var i=0;i<item.facts.length;i++){
+    html+='<div class="fact-item" id="fact-'+i+'" onclick="revealFact('+i+')">'+
+      '<div class="fact-num">'+(i+1)+'</div>'+
+      '<div class="fact-text">'+item.facts[i]+'</div></div>';
   }
-  html += '<div class="reveal-hint" style="margin-bottom:10px;margin-top:0">Tap any fact to highlight it &#10024;</div>';
-  return html;
+  return html+'</div>';
 }
 
-function buildCountdownGrid(cd, labels) {
-  var keys = labels || ["days","hrs","min","sec"];
-  var vals = [cd.d, cd.h, cd.m, cd.s];
-  var html = '<div class="cd-grid">';
-  for (var i = 0; i < keys.length; i++) {
-    html += '<div class="cd-cell"><span class="cd-num" id="cd-' + keys[i] + '">' + vals[i] + '</span><span class="cd-unit">' + keys[i] + '</span></div>';
+function buildActivityCard(item,nowMins,isCurrent){
+  if(!item)return"";
+  var isBday=item.type==="birthday";
+  var tc=TYPE_CONFIG[item.type]||TYPE_CONFIG.logistics;
+  var cardCls=isBday?"birthday-card":(isCurrent?"current-card":"next-card");
+  var html='<div class="'+cardCls+'">';
+  if(isCurrent){
+    html+='<div class="card-label"><span class="'+(isBday?"bpulse":"pulse")+'"></span>'+(isBday?"Happening now — Birthday moment!":"Happening now")+'</div>';
+  }else{
+    var si=toMins(item.time)-nowMins;
+    var ss=si<=1?"starting now":si<60?"in "+si+" min":"in 1 hr";
+    html+='<div class="card-label">Up next &middot; '+ss+'</div>';
   }
-  return html + '</div>';
+  html+='<span class="tag '+tc.cls+'">'+tc.label+'</span>';
+  html+='<div class="activity-time">'+item.time+' &ndash; '+item.end+'</div>';
+  html+='<div class="activity-name">'+item.name+'</div>';
+  html+='<div class="activity-desc">'+item.desc+'</div>';
+  if(isCurrent){
+    var sm=toMins(item.time),em=toMins(item.end);
+    var pct=Math.min(100,Math.max(0,Math.round(((nowMins-sm)/(em-sm))*100)));
+    var rem=em-nowMins;
+    var rs=rem>60?Math.floor(rem/60)+"h "+(rem%60)+"m left":rem+"m left";
+    html+='<div class="prog-wrap"><div class="prog-track"><div class="prog-fill" style="width:'+pct+'%"></div></div>'+
+      '<div class="prog-labels"><span>'+pct+'% complete</span><span>'+rs+'</span></div></div>';
+  }
+  return html+'</div>';
 }
 
-function buildActivityCard(item, nowMins, isCurrentCard) {
-  if (!item) return "";
-  var isBday = item.type === "birthday";
-  var tc = TYPE_CONFIG[item.type] || TYPE_CONFIG.logistics;
-  var cardCls = isBday ? "birthday-card" : (isCurrentCard ? "current-card" : "next-card");
-  var html = '<div class="' + cardCls + '">';
-
-  if (isCurrentCard) {
-    var pulseCls = isBday ? "bpulse" : "pulse";
-    var labelText = isBday ? "Happening now — Birthday moment!" : "Happening now";
-    html += '<div class="card-label"><span class="' + pulseCls + '"></span>' + labelText + '</div>';
-  } else {
-    var startsIn = toMins(item.time) - nowMins;
-    var startsStr = startsIn <= 1 ? "starting now" : (startsIn < 60 ? "in " + startsIn + " min" : "in 1 hr");
-    html += '<div class="card-label">Up next &middot; ' + startsStr + '</div>';
-  }
-
-  html += '<span class="tag ' + tc.cls + '">' + tc.label + '</span>';
-  html += '<div class="activity-time">' + item.time + ' &ndash; ' + item.end + '</div>';
-  html += '<div class="activity-name">' + item.name + '</div>';
-  html += '<div class="activity-desc">' + item.desc + '</div>';
-
-  if (isCurrentCard) {
-    var startMins = toMins(item.time);
-    var endMins = toMins(item.end);
-    var dur = endMins - startMins;
-    var elapsed = nowMins - startMins;
-    var pct = Math.min(100, Math.max(0, Math.round((elapsed / dur) * 100)));
-    var rem = endMins - nowMins;
-    var remStr = rem > 60 ? Math.floor(rem / 60) + "h " + (rem % 60) + "m left" : rem + "m left";
-    html += '<div class="prog-wrap">' +
-      '<div class="prog-track"><div class="prog-fill" style="width:' + pct + '%"></div></div>' +
-      '<div class="prog-labels"><span>' + pct + '% complete</span><span>' + remStr + '</span></div>' +
-    '</div>';
-  }
-
-  html += '</div>';
-  return html;
-}
-
-// ─── MAIN RENDER ─────────────────────────────────────────────────────────────
-function render() {
-  var main = document.getElementById("main");
-  if (!main) return;
-
-  var now = getPeruTime();
-  var nowMins = now.getHours() * 60 + now.getMinutes();
-  var todayKey = getTodayKey();
-  var isBirthday = todayKey === "2026-05-03";
-
-  // Use explicit UTC-based dates to avoid any timezone ambiguity
-  var av263Depart = new Date("2026-05-01T04:20:00Z"); // 11:20pm CDT = 04:20 UTC next day
-  var av263Arrive = new Date("2026-05-01T10:30:00Z"); // 5:30am CDT = 10:30 UTC
-  var av105Depart = new Date("2026-05-01T13:35:00Z"); // 8:35am CDT = 13:35 UTC
-  var tripStart   = new Date("2026-05-01T16:20:00Z"); // 11:20am Lima = 16:20 UTC
-  var tripEnd     = new Date("2026-05-07T05:00:00Z"); // midnight Lima May 7
-
-  var html = "";
-
-  // ── PRE-TRIP PHASES ──
-  if (now < tripStart) {
-    var preTitle, preIcon, preDesc, flightHtml, cdTarget, cdLabels;
-
-    if (now < av263Depart) {
-      // Phase 1: Before departure
-      preIcon = "&#9992;&#65039;"; preTitle = "Adventure starts soon!";
-      preDesc = "Departing O'Hare (ORD) &middot; April 30";
-      cdTarget = av263Depart;
-      cdLabels = ["days","hrs","min","sec"];
-      flightHtml = buildFlightCard("ORD","Chicago O'Hare","BOG","Bogota","AV263","~5h 10m","11:20 PM","~5:30 AM","Apr 30 &middot; Thu","Next flight");
-    } else if (now < av263Arrive) {
-      // Phase 2: In the air ORD-BOG
-      preIcon = "&#128747;&#65039;"; preTitle = "In the air — ORD to BOG";
-      var d2 = fmtCountdown(av263Arrive - now);
-      preDesc = "AV263 &middot; Landing in Bogota in " + d2.h + "h " + d2.m + "m";
-      cdTarget = av263Arrive;
-      cdLabels = ["hrs","min","sec","dest"];
-      flightHtml = buildFlightCard("ORD","Chicago O'Hare","BOG","Bogota","AV263","~5h 10m","11:20 PM","~5:30 AM","Apr 30 &rarr; May 1","Currently flying");
-    } else if (now < av105Depart) {
-      // Phase 3: Landed in BOG
-      preIcon = "&#128748;&#65039;"; preTitle = "Landed in Bogota!";
-      var d3 = fmtCountdown(av105Depart - now);
-      preDesc = "Next flight to Cusco departs in " + d3.h + "h " + d3.m + "m";
-      cdTarget = av105Depart;
-      cdLabels = ["hrs","min","sec","dest"];
-      flightHtml = buildFlightCard("BOG","Bogota","CUZ","Cusco","AV105","~3h 30m","~8:35 AM","11:20 AM","May 1 &middot; Fri","Next flight — boarding soon");
-    } else {
-      // Phase 4: In the air BOG-CUZ
-      preIcon = "&#128747;&#65039;"; preTitle = "Almost there — BOG to Cusco!";
-      var d4 = fmtCountdown(tripStart - now);
-      preDesc = "AV105 &middot; Landing in Cusco in " + d4.h + "h " + d4.m + "m";
-      cdTarget = tripStart;
-      cdLabels = ["hrs","min","sec","dest"];
-      flightHtml = buildFlightCard("BOG","Bogota","CUZ","Cusco","AV105","~3h 30m","~8:35 AM","11:20 AM","May 1 &middot; Fri","Currently flying — almost there!");
-    }
-
-    var cd = fmtCountdown(cdTarget - now);
-    var cdGrid = "";
-    if (cdLabels[3] === "dest") {
-      cdGrid = '<div class="cd-grid">' +
-        '<div class="cd-cell"><span class="cd-num" id="cd-hrs">' + cd.h + '</span><span class="cd-unit">hrs</span></div>' +
-        '<div class="cd-cell"><span class="cd-num" id="cd-min">' + cd.m + '</span><span class="cd-unit">min</span></div>' +
-        '<div class="cd-cell"><span class="cd-num" id="cd-sec">' + cd.s + '</span><span class="cd-unit">sec</span></div>' +
-        '<div class="cd-cell"><span class="cd-num" style="font-size:16px">CUZ</span><span class="cd-unit">dest</span></div>' +
-      '</div>';
-    } else {
-      cdGrid = '<div class="cd-grid">' +
-        '<div class="cd-cell"><span class="cd-num" id="cd-days">' + cd.d + '</span><span class="cd-unit">days</span></div>' +
-        '<div class="cd-cell"><span class="cd-num" id="cd-hrs">' + cd.h + '</span><span class="cd-unit">hrs</span></div>' +
-        '<div class="cd-cell"><span class="cd-num" id="cd-min">' + cd.m + '</span><span class="cd-unit">min</span></div>' +
-        '<div class="cd-cell"><span class="cd-num" id="cd-sec">' + cd.s + '</span><span class="cd-unit">sec</span></div>' +
-      '</div>';
-    }
-
-    html = '<div class="pre-card">' +
-      '<div style="font-size:36px;margin-bottom:12px">' + preIcon + '</div>' +
-      '<div style="font-family:Playfair Display,serif;font-size:20px;color:#C8933A;margin-bottom:8px">' + preTitle + '</div>' +
-      '<div style="font-size:13px;color:#9A8E7E;margin-bottom:0">' + preDesc + '</div>' +
-      cdGrid + flightHtml +
-    '</div>';
-
-    main.innerHTML = html;
-    return;
-  }
-
-  // ── AFTER TRIP ──
-  if (now >= tripEnd) {
-    main.innerHTML = '<div class="free-card">' +
-      '<div style="font-size:40px;margin-bottom:16px">&#127968;</div>' +
-      '<div style="font-family:Playfair Display,serif;font-size:20px;color:#C8933A;margin-bottom:8px">Back home safely!</div>' +
-      '<div style="font-size:13px;color:#9A8E7E;line-height:1.6">What an incredible trip &mdash; Machu Picchu on a birthday, Peru, and Bogota.<br>Welcome back, family!</div>' +
-    '</div>';
-    return;
-  }
-
-  // ── LIVE TRIP ──
-  var items = SCHEDULE[todayKey] || [];
-  var currentIdx = -1, nextIdx = -1;
-  for (var i = 0; i < items.length; i++) {
-    var s = toMins(items[i].time), e = toMins(items[i].end);
-    if (nowMins >= s && nowMins < e) { currentIdx = i; break; }
-    if (nowMins < s) { nextIdx = i; break; }
-  }
-  if (currentIdx === -1 && nextIdx === -1) currentIdx = items.length - 1;
-
-  var current = currentIdx >= 0 ? items[currentIdx] : null;
-  var nextWithinHour = null;
-  var checkNext = current ? items[currentIdx + 1] : (nextIdx >= 0 ? items[nextIdx] : null);
-  if (checkNext && (toMins(checkNext.time) - nowMins) <= 60) nextWithinHour = checkNext;
-
-  html = '';
-  html += '<div class="day-label">' + (DAY_LABELS[todayKey] || todayKey) + '</div>';
-  if (isBirthday) html += '<div style="text-align:center;font-size:28px;letter-spacing:4px;margin:-4px 0 4px">&#127874; &#127881; &#127748;</div>';
-
-  if (current) {
-    html += buildActivityCard(current, nowMins, true);
-    html += buildFactsCard(current);
-  }
-
-  if (nextWithinHour) {
-    html += buildActivityCard(nextWithinHour, nowMins, false);
-  } else if (current) {
-    html += '<div class="nothing-card">' +
-      '<div style="font-size:24px;margin-bottom:8px">&#127807;</div>' +
-      '<div style="font-family:Playfair Display,serif;font-size:16px;color:#9A8E7E;margin-bottom:4px">Nothing in the next hour</div>' +
-      '<div style="font-size:13px;color:#5A5040">Enjoy the moment — next activity coming later</div>' +
-    '</div>';
-  }
-
-  if (!current && !nextWithinHour) {
-    html += '<div class="free-card">' +
-      '<div style="font-size:36px;margin-bottom:12px">&#127769;</div>' +
-      '<div style="font-family:Playfair Display,serif;font-size:20px;color:#C8933A;margin-bottom:8px">Day complete</div>' +
-      '<div style="font-size:13px;color:#9A8E7E">All activities for today are done. Rest well!</div>' +
-    '</div>';
-  }
-
-  // Add tonight's dinner card at the bottom
-  var todayDinner = buildDinnerCard(todayKey);
-  if (todayDinner) html += todayDinner;
-
-  main.innerHTML = html;
-}
-
-// ─── CLOCK ───────────────────────────────────────────────────────────────────
-function updateClock() {
-  var now = getPeruTime();
-  var t = now.toLocaleTimeString("en-US", { hour:"2-digit", minute:"2-digit", hour12:true });
-  var d = now.toLocaleDateString("en-US", { month:"short", day:"numeric" });
-  var el = document.getElementById("clockDisplay");
-  var el2 = document.getElementById("clockDate");
-  if (el) el.textContent = t;
-  if (el2) el2.textContent = "Lima \u00B7 " + d;
-}
-
-// ─── COUNTDOWN TICK ──────────────────────────────────────────────────────────
-function tickCountdown() {
-  var now = getPeruTime();
-  var av263Depart = new Date("2026-05-01T04:20:00Z");
-  var av263Arrive = new Date("2026-05-01T10:30:00Z");
-  var av105Depart = new Date("2026-05-01T13:35:00Z");
-  var tripStart   = new Date("2026-05-01T16:20:00Z");
-  if (now >= tripStart) return;
-
-  var target = now < av263Depart ? av263Depart :
-               now < av263Arrive ? av263Arrive :
-               now < av105Depart ? av105Depart : tripStart;
-  var cd = fmtCountdown(target - now);
-
-  var days = document.getElementById("cd-days");
-  var hrs  = document.getElementById("cd-hrs");
-  var min  = document.getElementById("cd-min");
-  var sec  = document.getElementById("cd-sec");
-  if (days) days.textContent = cd.d;
-  if (hrs)  hrs.textContent  = now < av263Depart ? cd.h : cd.h;
-  if (min)  min.textContent  = cd.m;
-  if (sec)  sec.textContent  = cd.s;
-}
-
-
-var PICKED_REST_KEY = 'peru_dinner_pick_may1';
-var selectedRestName = null;
-
-function selectRest(card, name) {
-  document.querySelectorAll('.rest-card').forEach(function(c) { c.classList.remove('selected'); });
-  card.classList.add('selected');
-  selectedRestName = name;
-  document.getElementById('confirmName').textContent = name;
-  document.getElementById('pickerConfirm').classList.add('show');
-}
-
-function confirmRest() {
-  if (!selectedRestName) return;
-  try { localStorage.setItem(PICKED_REST_KEY, selectedRestName); } catch(e) {}
-  document.getElementById('pickerOverlay').style.display = 'none';
-  // Update the May 1 dinner event name in schedule
-  showPickedDinner(selectedRestName);
-}
-
-function showPickedDinner(name) {
-  // Update SCHEDULE dinner entry for May 1 to reflect choice
-  if (SCHEDULE['2026-05-01'] && SCHEDULE['2026-05-01'][6]) {
-    SCHEDULE['2026-05-01'][6].name = 'Dinner — ' + name;
-  }
-}
-
-function checkShouldShowPicker() {
-  var now = getPeruTime();
-  var may1 = new Date('2026-05-01T00:00:00-05:00');
-  var may2 = new Date('2026-05-02T00:00:00-05:00');
-  // Only show on May 1
-  if (now < may1 || now >= may2) return;
-  // Check if already picked
-  try {
-    var picked = localStorage.getItem(PICKED_REST_KEY);
-    if (picked) { showPickedDinner(picked); return; }
-  } catch(e) {}
-  // Show the picker
-  document.getElementById('pickerOverlay').style.display = 'block';
-}
-
-
-var DINNERS = {
-  "2026-05-01": {
-    chosen: true,
-    name: "TBD — birthday girl picks!",
-    tagline: "She chooses tonight",
-    desc: "The birthday girl picks her restaurant tonight from 5 options. Ask her which one she wants!",
-    pills: ["Her choice", "Tonight in Aguas Calientes"],
-    must: "She decides!"
-  },
-  "2026-05-02": {
-    name: "Restaurant Ayahuasca Grill",
-    tagline: "Rated 4.9 · Hidden gem uphill from the tourist strip",
-    desc: "Walk uphill away from the train station crowd to find this local favourite. Bohemian atmosphere, the owner sometimes performs live, and the best trout and chicken in town.",
-    pills: ["~$15–25/person", "Chicken & fish", "Hidden gem"],
-    must: "Trucha a la parrilla (grilled trout) · Pollo saltado · Chicha morada"
-  },
-  "2026-05-03": {
-    name: "Morena Peruvian Kitchen",
-    tagline: "Birthday dinner · Plaza de Armas, Cusco · Reserved",
-    desc: "Window table overlooking the illuminated Plaza de Armas. Famous for trucha tacos and exceptional fish dishes. Birthday decoration arranged on the table. The finest dinner of the trip.",
-    pills: ["~$30–45/person", "Reservation confirmed", "Birthday dinner"],
-    must: "Trucha tacos · Ceviche de trucha · Pollo a la brasa"
-  },
-  "2026-05-04": {
-    name: "Chull's Peruvian Cuisine",
-    tagline: "Rated 4.9 · Farewell Cusco dinner",
-    desc: "Cozy hidden courtyard restaurant, the perfect send-off for Cusco. Known for creative takes on Peruvian classics. Order Chicha Morada for the whole table.",
-    pills: ["~$15–25/person", "Chicken & fish", "Courtyard"],
-    must: "Aji de gallina (creamy chicken) · Trucha andina · Chicha Morada for the kid"
-  },
-  "2026-05-05": {
-    name: "Airport or hotel restaurant",
-    tagline: "Travel day — keep it light",
-    desc: "Long travel day to Bogota. Eat a light lunch near the Plaza de Armas before heading to the airport. Grab snacks at Cusco airport for the flight.",
-    pills: ["Light meal", "Travel day"],
-    must: "Keep it simple — soup, sandwich, or a bowl of quinoa"
-  },
-  "2026-05-06": {
-    name: "La Candelaria local spots",
-    tagline: "Bogota · Colombian flavours",
-    desc: "Explore La Candelaria historic district at lunch. Street food vendors and local restaurants serve arepas, empanadas, and fresh chicken dishes. No reservations needed.",
-    pills: ["$10–20/person", "Colombian cuisine", "No reservation"],
-    must: "Empanadas de pipian · Ajiaco (chicken soup) · Fresh lulo juice"
-  }
-};
-
-function buildDinnerCard(todayKey) {
-  var dinner = DINNERS[todayKey];
-  if (!dinner) return "";
-
-  // On May 1, check if she already picked
-  if (todayKey === "2026-05-01") {
-    try {
-      var picked = localStorage.getItem('peru_dinner_pick_may1');
-      if (picked) {
-        dinner = {
-          name: picked,
-          tagline: "Her choice for tonight",
-          desc: "The birthday girl has made her pick! Make sure to book a table when you arrive at the restaurant.",
-          pills: ["Tonight in Aguas Calientes", "Her choice"],
-          must: "Whatever she wants — it is her birthday!"
-        };
-      }
-    } catch(e) {}
-  }
-
-  var html = '<div class="dinner-card">' +
-    '<div class="dinner-label">&#127860; Tonight\'s dinner</div>' +
-    '<div class="dinner-name">' + dinner.name + '</div>' +
-    '<div class="dinner-tagline">' + dinner.tagline + '</div>' +
-    '<div class="dinner-desc">' + dinner.desc + '</div>' +
+function buildDinnerCard(todayKey){
+  var d=DINNERS[todayKey];
+  if(!d)return"";
+  var html='<div class="dinner-card">'+
+    '<div class="dinner-label">&#127860; Tonight\'s dinner</div>'+
+    '<div class="dinner-name">'+d.name+'</div>'+
+    '<div class="dinner-tagline">'+d.tagline+'</div>'+
+    '<div class="dinner-desc">'+d.desc+'</div>'+
     '<div class="dinner-pills">';
-  for (var i = 0; i < dinner.pills.length; i++) {
-    html += '<span class="dinner-pill">' + dinner.pills[i] + '</span>';
+  for(var i=0;i<d.pills.length;i++)html+='<span class="dinner-pill">'+d.pills[i]+'</span>';
+  html+='</div><div class="dinner-must"><strong>&#127869; Must order:</strong> '+d.must+'</div>';
+  if(d.link){
+    html+='<a class="dinner-options-link" href="dinner.html">&#127860; View all 5 restaurant options &rarr;</a>';
   }
-  html += '</div>';
-  html += '<div class="dinner-must"><strong>&#127869; Must order:</strong> ' + dinner.must + '</div>';
-
-  // On May 1, offer to change if already picked
-  if (todayKey === "2026-05-01") {
-    try {
-      if (localStorage.getItem('peru_dinner_pick_may1')) {
-        html += '<div class="dinner-change" onclick="changeDinner()">Change restaurant choice</div>';
-      }
-    } catch(e) {}
-  }
-
-  html += '</div>';
-  return html;
+  return html+'</div>';
 }
 
-function changeDinner() {
-  try { localStorage.removeItem('peru_dinner_pick_may1'); } catch(e) {}
-  document.getElementById('pickerOverlay').style.display = 'block';
+function render(){
+  var main=document.getElementById("main");
+  if(!main)return;
+  var now=getPeruTime();
+  var nowMins=now.getHours()*60+now.getMinutes();
+  var todayKey=getTodayKey();
+  var isBirthday=todayKey==="2026-05-03";
+  var av263Depart=new Date("2026-05-01T04:20:00Z");
+  var av263Arrive=new Date("2026-05-01T10:30:00Z");
+  var av105Depart=new Date("2026-05-01T13:35:00Z");
+  var tripStart=new Date("2026-05-01T16:20:00Z");
+  var tripEnd=new Date("2026-05-07T05:00:00Z");
+  var html="";
+
+  if(now<tripStart){
+    var icon,title,desc2,flightHtml,cd;
+    if(now<av263Depart){
+      cd=fmtCountdown(av263Depart-now);
+      icon="&#9992;&#65039;";title="Adventure starts soon!";desc2="Departing O'Hare (ORD) &middot; April 30";
+      flightHtml=buildFlightCard("ORD","Chicago O'Hare","BOG","Bogota","AV263","~5h 10m","11:20 PM","~5:30 AM","Apr 30 &middot; Thu","Next flight");
+    }else if(now<av263Arrive){
+      cd=fmtCountdown(av263Arrive-now);
+      icon="&#128747;&#65039;";title="In the air — ORD to BOG";
+      var t1=fmtCountdown(av263Arrive-now);
+      desc2="AV263 &middot; Landing in Bogota in "+t1.h+"h "+t1.m+"m";
+      flightHtml=buildFlightCard("ORD","Chicago O'Hare","BOG","Bogota","AV263","~5h 10m","11:20 PM","~5:30 AM","Apr 30 &rarr; May 1","Currently flying");
+    }else if(now<av105Depart){
+      cd=fmtCountdown(av105Depart-now);
+      icon="&#128748;&#65039;";title="Landed in Bogota!";
+      var t2=fmtCountdown(av105Depart-now);
+      desc2="Next flight to Cusco departs in "+t2.h+"h "+t2.m+"m";
+      flightHtml=buildFlightCard("BOG","Bogota","CUZ","Cusco","AV105","~3h 30m","~8:35 AM","11:20 AM","May 1 &middot; Fri","Next flight — boarding soon");
+    }else{
+      cd=fmtCountdown(tripStart-now);
+      icon="&#128747;&#65039;";title="Almost there — BOG to Cusco!";
+      var t3=fmtCountdown(tripStart-now);
+      desc2="AV105 &middot; Landing in Cusco in "+t3.h+"h "+t3.m+"m";
+      flightHtml=buildFlightCard("BOG","Bogota","CUZ","Cusco","AV105","~3h 30m","~8:35 AM","11:20 AM","May 1 &middot; Fri","Currently flying — almost there!");
+    }
+    var cdHtml='<div class="cd-grid">'+
+      '<div class="cd-cell"><span class="cd-num" id="cd-d">'+cd.d+'</span><span class="cd-unit">days</span></div>'+
+      '<div class="cd-cell"><span class="cd-num" id="cd-h">'+cd.h+'</span><span class="cd-unit">hrs</span></div>'+
+      '<div class="cd-cell"><span class="cd-num" id="cd-m">'+cd.m+'</span><span class="cd-unit">min</span></div>'+
+      '<div class="cd-cell"><span class="cd-num" id="cd-s">'+cd.s+'</span><span class="cd-unit">sec</span></div>'+
+    '</div>';
+    html='<div class="pre-card">'+
+      '<div style="font-size:36px;margin-bottom:12px">'+icon+'</div>'+
+      '<div style="font-family:Playfair Display,serif;font-size:20px;color:#C8933A;margin-bottom:8px">'+title+'</div>'+
+      '<div style="font-size:13px;color:#9A8E7E;margin-bottom:0">'+desc2+'</div>'+
+      cdHtml+flightHtml+
+    '</div>';
+    main.innerHTML=html;
+    return;
+  }
+
+  if(now>=tripEnd){
+    main.innerHTML='<div class="free-card"><div style="font-size:40px;margin-bottom:16px">&#127968;</div>'+
+      '<div style="font-family:Playfair Display,serif;font-size:20px;color:#C8933A;margin-bottom:8px">Back home safely!</div>'+
+      '<div style="font-size:13px;color:#9A8E7E;line-height:1.6">What an incredible trip &mdash; Machu Picchu on a birthday, Peru, and Bogota.<br>Welcome back, family!</div></div>';
+    return;
+  }
+
+  var items=SCHEDULE[todayKey]||[];
+  var currentIdx=-1,nextIdx=-1;
+  for(var i=0;i<items.length;i++){
+    var s=toMins(items[i].time),e=toMins(items[i].end);
+    if(nowMins>=s&&nowMins<e){currentIdx=i;break;}
+    if(nowMins<s){nextIdx=i;break;}
+  }
+  if(currentIdx===-1&&nextIdx===-1)currentIdx=items.length-1;
+
+  var current=currentIdx>=0?items[currentIdx]:null;
+  var nextWithinHour=null;
+  var checkNext=current?items[currentIdx+1]:(nextIdx>=0?items[nextIdx]:null);
+  if(checkNext&&(toMins(checkNext.time)-nowMins)<=60)nextWithinHour=checkNext;
+
+  html='';
+  html+='<div class="day-label">'+(DAY_LABELS[todayKey]||todayKey)+'</div>';
+  if(isBirthday)html+='<div style="text-align:center;font-size:28px;letter-spacing:4px;margin:-4px 0 4px">&#127874; &#127881; &#127748;</div>';
+
+  if(current){
+    html+=buildActivityCard(current,nowMins,true);
+    html+=buildFactsCard(current);
+  }
+
+  if(nextWithinHour){
+    html+=buildActivityCard(nextWithinHour,nowMins,false);
+  }else if(current){
+    html+='<div class="nothing-card">'+
+      '<div style="font-size:24px;margin-bottom:8px">&#127807;</div>'+
+      '<div style="font-family:Playfair Display,serif;font-size:16px;color:#9A8E7E;margin-bottom:4px">Nothing in the next hour</div>'+
+      '<div style="font-size:13px;color:#5A5040">Enjoy the moment — next activity coming later</div></div>';
+  }
+
+  if(!current&&!nextWithinHour){
+    html+='<div class="free-card">'+
+      '<div style="font-size:36px;margin-bottom:12px">&#127769;</div>'+
+      '<div style="font-family:Playfair Display,serif;font-size:20px;color:#C8933A;margin-bottom:8px">Day complete</div>'+
+      '<div style="font-size:13px;color:#9A8E7E">All activities for today are done. Rest well!</div></div>';
+  }
+
+  html+=buildDinnerCard(todayKey);
+  main.innerHTML=html;
 }
 
-// ─── INIT ────────────────────────────────────────────────────────────────────
-updateClock();
-render();
-checkShouldShowPicker();
-setInterval(updateClock, 1000);
-setInterval(tickCountdown, 1000);
-setInterval(render, 60000);
+function updateClock(){
+  var now=getPeruTime();
+  var el=document.getElementById("clockDisplay");
+  var el2=document.getElementById("clockDate");
+  if(el)el.textContent=now.toLocaleTimeString("en-US",{hour:"2-digit",minute:"2-digit",hour12:true});
+  if(el2)el2.textContent="Lima \u00B7 "+now.toLocaleDateString("en-US",{month:"short",day:"numeric"});
+}
+
+function tickCountdown(){
+  var now=getPeruTime();
+  var av263Depart=new Date("2026-05-01T04:20:00Z");
+  var av263Arrive=new Date("2026-05-01T10:30:00Z");
+  var av105Depart=new Date("2026-05-01T13:35:00Z");
+  var tripStart=new Date("2026-05-01T16:20:00Z");
+  if(now>=tripStart)return;
+  var target=now<av263Depart?av263Depart:now<av263Arrive?av263Arrive:now<av105Depart?av105Depart:tripStart;
+  var cd=fmtCountdown(target-now);
+  var d=document.getElementById("cd-d"),h=document.getElementById("cd-h"),m=document.getElementById("cd-m"),s=document.getElementById("cd-s");
+  if(d)d.textContent=cd.d;if(h)h.textContent=cd.h;if(m)m.textContent=cd.m;if(s)s.textContent=cd.s;
+}
+
+updateClock();render();
+setInterval(updateClock,1000);
+setInterval(tickCountdown,1000);
+setInterval(render,60000);
 </script>
 </body>
 </html>

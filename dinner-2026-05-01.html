@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tonight's Dinner Options</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#1A1A1A;color:#E8E0D0;font-family:"DM Sans",sans-serif;min-height:100vh}
+.header{background:linear-gradient(135deg,#1A1208 0%,#2A1F0A 50%,#1A1208 100%);border-bottom:1px solid #C8933A;padding:18px 20px 14px;text-align:center;position:relative}
+.back{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:13px;color:#C8933A;text-decoration:none;display:flex;align-items:center;gap:4px}
+.header h1{font-family:"Playfair Display",serif;font-size:19px;font-weight:500;color:#C8933A}
+.header-sub{font-size:12px;color:#9A8E7E;margin-top:3px}
+.main{padding:20px;max-width:480px;margin:0 auto}
+.intro{font-size:13px;color:#9A8E7E;text-align:center;margin-bottom:20px;line-height:1.6;padding:12px 16px;background:#1F1A10;border:1px solid #3A3020;border-radius:12px}
+.intro strong{color:#C8933A}
+.rest-card{background:#2A2A2A;border:1px solid #3A3020;border-radius:20px;padding:20px 22px;margin-bottom:14px;position:relative;overflow:hidden}
+.rest-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#C8933A,#F5C86A,#C8933A)}
+.rest-rank{font-size:22px;margin-bottom:8px}
+.rest-name{font-family:"Playfair Display",serif;font-size:20px;color:#E8E0D0;margin-bottom:4px}
+.rest-name a{color:#E8E0D0;border-bottom:1px solid #C8933A;text-decoration:none}
+.rest-tagline{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#C8933A;margin-bottom:10px}
+.rest-desc{font-size:13px;color:#9A8E7E;line-height:1.6;margin-bottom:12px}
+.rest-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.rest-pill{font-size:11px;background:#1A1208;border:1px solid #3A3020;border-radius:99px;padding:3px 10px;color:#9A8E7E}
+.rest-must{font-size:12px;color:#6A5A40;padding-top:10px;border-top:1px solid #3A3020}
+.rest-must strong{color:#C8933A}
+.rest-vibe{font-size:12px;color:#6A5A40;margin-top:6px}
+.rest-vibe strong{color:#9A8E7E}
+.footer{text-align:center;padding:24px 0 32px;font-size:12px;color:#3A3228}
+.note{background:#1F1A10;border:1px solid #3A3020;border-radius:10px;padding:8px 14px;font-size:12px;color:#C8933A;text-align:center;margin-bottom:16px}
+</style>
+</head>
+<body>
+<div class="header">
+  <a class="back" href="index.html">&#8592; Back</a>
+  <h1>Tonight's Dinner Options</h1>
+  <div class="header-sub">Aguas Calientes · May 1, 2026 · Pick your favourite</div>
+</div>
+<div class="main">
+  <div class="note">&#10003; All dishes listed are chicken, fish or vegetarian — no red meat</div>
+  <div class="rest-card">
+  <div class="rest-rank">🥇</div>
+  <div class="rest-name"><a href="https://maps.google.com/?q=TUNAWA+Aguas+Calientes+Peru" target="_blank">TUNAWA Andean Fusion</a></div>
+  <div class="rest-tagline">Contemporary Peruvian · Rated 4.8 · The finest food in town</div>
+  <div class="rest-desc">Rivals Lima finest establishments with innovative dishes and creative presentations. Famous for Laguna ceviche with passion fruit sauce and grilled trucha. River views, refined service, the most technically impressive kitchen in Aguas Calientes.</div>
+  <div class="rest-pills"><span class="rest-pill">~$35-50/person</span><span class="rest-pill">River views</span><span class="rest-pill">Creative cuisine</span><span class="rest-pill">Upscale</span></div>
+  <div class="rest-must"><strong>&#127869; Must order:</strong> Laguna ceviche with passion fruit · Aji de gallina ravioli (chicken) · Grilled trucha a la parrilla</div>
+  <div class="rest-vibe"><strong>Best for:</strong> Best for creative cuisine and refined experience</div>
+</div><div class="rest-card">
+  <div class="rest-rank">🥈</div>
+  <div class="rest-name"><a href="https://maps.google.com/?q=Indio+Feliz+Aguas+Calientes+Peru" target="_blank">Indio Feliz</a></div>
+  <div class="rest-tagline">French-Peruvian Fusion · The local legend · Romantic courtyard</div>
+  <div class="rest-desc">The most celebrated restaurant in Aguas Calientes. A bohemian candlelit courtyard with vibrant murals. French techniques meet Andean ingredients. Famous for trout in passion fruit sauce and creamy chicken dishes. Locals and return visitors always come back.</div>
+  <div class="rest-pills"><span class="rest-pill">~$25-35/person</span><span class="rest-pill">Romantic courtyard</span><span class="rest-pill">Candlelit</span><span class="rest-pill">Reservations advised</span></div>
+  <div class="rest-must"><strong>&#127869; Must order:</strong> Trout in passion fruit sauce · Aji de gallina (creamy chicken) · Trout ceviche</div>
+  <div class="rest-vibe"><strong>Best for:</strong> Best for romantic atmosphere and special occasion feel</div>
+</div><div class="rest-card">
+  <div class="rest-rank">🥉</div>
+  <div class="rest-name"><a href="https://maps.google.com/?q=Chullpi+Aguas+Calientes+Peru" target="_blank">Chullpi</a></div>
+  <div class="rest-tagline">Modern Peruvian · River terrace · Famous dessert</div>
+  <div class="rest-desc">Great food, great views, outstanding service on a lively river terrace. Famous for the chocolate treasure dessert that people specifically return for. Grilled trout and chicken lomo saltado are excellent. Perfect if you want celebratory but relaxed.</div>
+  <div class="rest-pills"><span class="rest-pill">~$18-28/person</span><span class="rest-pill">River terrace</span><span class="rest-pill">Craft beer</span><span class="rest-pill">Lively</span></div>
+  <div class="rest-must"><strong>&#127869; Must order:</strong> Grilled trout with Andean herbs · Chicken saltado · Chocolate treasure dessert</div>
+  <div class="rest-vibe"><strong>Best for:</strong> Best for relaxed celebration and outstanding dessert</div>
+</div><div class="rest-card">
+  <div class="rest-rank">4️⃣</div>
+  <div class="rest-name"><a href="https://maps.google.com/?q=Inti+House+Aguas+Calientes+Peru" target="_blank">Inti House</a></div>
+  <div class="rest-tagline">Peruvian Classics · Family-friendly · Best value</div>
+  <div class="rest-desc">Warm, generous, no-fuss restaurant beloved by locals and families. Big portions, relaxed pace, no pretension. Perfect if the day has been long and you want comfort food done really well. Great for the little one too.</div>
+  <div class="rest-pills"><span class="rest-pill">~$12-20/person</span><span class="rest-pill">Family-friendly</span><span class="rest-pill">Comfort food</span><span class="rest-pill">Best value</span></div>
+  <div class="rest-must"><strong>&#127869; Must order:</strong> Trout in maracuya sauce · Chicken aji de gallina · Fresh chicha morada for the table</div>
+  <div class="rest-vibe"><strong>Best for:</strong> Best for tired families and comfort food</div>
+</div><div class="rest-card">
+  <div class="rest-rank">5️⃣</div>
+  <div class="rest-name"><a href="https://maps.google.com/?q=El+Mapi+Inkaterra+Aguas+Calientes+Peru" target="_blank">El Mapi by Inkaterra</a></div>
+  <div class="rest-tagline">Boutique Hotel Dining · Sacred Valley ingredients</div>
+  <div class="rest-desc">The most polished hotel restaurant in Aguas Calientes, inside the beautiful Inkaterra boutique hotel. Ingredients sourced directly from the Sacred Valley and Amazon. Sophisticated but approachable.</div>
+  <div class="rest-pills"><span class="rest-pill">~$25-40/person</span><span class="rest-pill">Hotel restaurant</span><span class="rest-pill">Local ingredients</span><span class="rest-pill">Sophisticated</span></div>
+  <div class="rest-must"><strong>&#127869; Must order:</strong> Grilled trucha a la parrilla · Chicken causa rellena · Quinoa risotto with Andean herbs</div>
+  <div class="rest-vibe"><strong>Best for:</strong> Best for boutique feel and quality ingredients</div>
+</div>
+  <div class="footer">Ask your hotel or restaurant to reserve a table &#127860;</div>
+</div>
+</body>
+</html>

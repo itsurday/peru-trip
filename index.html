@@ -84,6 +84,14 @@ body{background:#1A1A1A;color:#E8E0D0;font-family:"DM Sans",sans-serif;min-heigh
 .dinner-must{font-size:12px;color:#6A5A40;padding-top:8px;border-top:1px solid #3A3020;margin-bottom:10px}
 .dinner-must strong{color:#C8933A}
 .dinner-options-link{display:block;text-align:center;font-size:12px;color:#C8933A;text-decoration:none;padding:8px;border:1px solid #3A3020;border-radius:10px;margin-top:4px;letter-spacing:.04em}
+.tt-bar{background:#1F1A10;border-bottom:1px solid #3A3020;padding:10px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
+.tt-label{font-size:11px;color:#9A8E7E;font-weight:500;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.tt-select{background:#2A2A2A;border:1px solid #3A3020;border-radius:10px;color:#E8E0D0;font-family:"DM Sans",sans-serif;font-size:13px;padding:6px 10px;outline:none;-webkit-appearance:none;cursor:pointer}
+.tt-select option{background:#1A1A1A}
+.tt-time{background:#2A2A2A;border:1px solid #3A3020;border-radius:10px;color:#E8E0D0;font-family:"DM Sans",sans-serif;font-size:13px;padding:6px 10px;outline:none;width:88px;cursor:pointer}
+.tt-btn{background:linear-gradient(135deg,#C8933A,#F5C86A);border:none;border-radius:10px;color:#1A1208;font-family:"DM Sans",sans-serif;font-size:12px;font-weight:600;padding:7px 16px;cursor:pointer;white-space:nowrap}
+.tt-live{background:transparent;border:1px solid #3A3020;border-radius:10px;color:#9A8E7E;font-family:"DM Sans",sans-serif;font-size:12px;padding:7px 14px;cursor:pointer;white-space:nowrap}
+.tt-banner{background:#3A2010;border-bottom:1px solid #C8933A;padding:8px 16px;text-align:center;font-size:12px;color:#C8933A;display:none}
 </style>
 </head>
 <body>
@@ -95,6 +103,22 @@ body{background:#1A1A1A;color:#E8E0D0;font-family:"DM Sans",sans-serif;min-heigh
   <h1>Peru Trip 2026</h1>
   <div class="header-sub">May 1&ndash;6, 2026</div>
 </div>
+<div class="tt-bar">
+  <span class="tt-label">&#9200; Relive the trip</span>
+  <select class="tt-select" id="ttDate">
+    <option value="">-- Pick a day --</option>
+    <option value="2026-05-01">May 1 &mdash; Arrival in Peru</option>
+    <option value="2026-05-02">May 2 &mdash; Ticket Day</option>
+    <option value="2026-05-03">May 3 &mdash; Birthday at Machu Picchu &#127874;</option>
+    <option value="2026-05-04">May 4 &mdash; Sacred Valley</option>
+    <option value="2026-05-05">May 5 &mdash; Departing Peru</option>
+    <option value="2026-05-06">May 6 &mdash; Bogota &amp; Home</option>
+  </select>
+  <input type="time" class="tt-time" id="ttTime" value="09:00">
+  <button class="tt-btn" onclick="applyTT()">&#10132; Go</button>
+  <button class="tt-live" onclick="resetTT()">&#128994; Live</button>
+</div>
+<div class="tt-banner" id="ttBanner"></div>
 <div class="main" id="main"></div>
 
 <script>
@@ -458,10 +482,71 @@ function tickCountdown(){
   if(d)d.textContent=cd.d;if(h)h.textContent=cd.h;if(m)m.textContent=cd.m;if(s)s.textContent=cd.s;
 }
 
+
+// TIME TRAVEL
+var ttMode=false,ttKey=null,ttMins=null;
+var ttNames={
+  "2026-05-01":"May 1 - Arrival in Peru",
+  "2026-05-02":"May 2 - Ticket Day",
+  "2026-05-03":"May 3 - Birthday at Machu Picchu",
+  "2026-05-04":"May 4 - Sacred Valley",
+  "2026-05-05":"May 5 - Departing Peru",
+  "2026-05-06":"May 6 - Bogota & Home"
+};
+function applyTT(){
+  var dv=document.getElementById("ttDate").value;
+  var tv=document.getElementById("ttTime").value;
+  if(!dv){alert("Please pick a day first!");return;}
+  var p=tv.split(":");
+  ttKey=dv;ttMins=parseInt(p[0])*60+parseInt(p[1]);ttMode=true;
+  var h=Math.floor(ttMins/60),m=ttMins%60,ap=h>=12?"PM":"AM",h12=h%12||12;
+  var ts=String(h12).padStart(2,"0")+":"+String(m).padStart(2,"0")+" "+ap;
+  var b=document.getElementById("ttBanner");
+  b.style.display="block";
+  b.innerHTML="&#9200; Reliving <strong>"+(ttNames[dv]||dv)+"</strong> at <strong>"+ts+"</strong> Lima time"    +" &nbsp;&mdash;&nbsp; <span style='cursor:pointer;text-decoration:underline' onclick='resetTT()'>Back to live</span>";
+  renderTT(ttKey,ttMins);
+}
+function resetTT(){
+  ttMode=false;ttKey=null;ttMins=null;
+  document.getElementById("ttBanner").style.display="none";
+  document.getElementById("ttDate").value="";
+  document.getElementById("ttTime").value="09:00";
+  render();
+}
+function renderTT(dateKey,nowMins){
+  var main=document.getElementById("main");
+  if(!main)return;
+  var isBirthday=dateKey==="2026-05-03";
+  var items=SCHEDULE[dateKey]||[];
+  var currentIdx=-1,nextIdx=-1;
+  for(var i=0;i<items.length;i++){
+    var s=toMins(items[i].time),e=toMins(items[i].end);
+    if(nowMins>=s&&nowMins<e){currentIdx=i;break;}
+    if(nowMins<s){nextIdx=i;break;}
+  }
+  if(currentIdx===-1&&nextIdx===-1)currentIdx=items.length-1;
+  var current=currentIdx>=0?items[currentIdx]:null;
+  var nwh=null;
+  var cn=current?items[currentIdx+1]:(nextIdx>=0?items[nextIdx]:null);
+  if(cn&&(toMins(cn.time)-nowMins)<=60)nwh=cn;
+  var html="";
+  html+='<div class="day-label">'+(DAY_LABELS[dateKey]||dateKey)+"</div>";
+  if(isBirthday)html+='<div style="text-align:center;font-size:28px;letter-spacing:4px;margin:-4px 0 4px">&#127874; &#127881; &#127748;</div>';
+  if(current){html+=buildActivityCard(current,nowMins,true);html+=buildFactsCard(current);}
+  if(nwh){html+=buildActivityCard(nwh,nowMins,false);}
+  else if(current){html+='<div class="nothing-card"><div style="font-size:24px;margin-bottom:8px">&#127807;</div>'
+    +'<div style="font-family:Playfair Display,serif;font-size:16px;color:#9A8E7E;margin-bottom:4px">Nothing in the next hour</div>'
+    +'<div style="font-size:13px;color:#5A5040">Enjoy the moment</div></div>';}
+  if(!current&&!nwh){html+='<div class="free-card"><div style="font-size:36px;margin-bottom:12px">&#127769;</div>'
+    +'<div style="font-family:Playfair Display,serif;font-size:20px;color:#C8933A;margin-bottom:8px">Day complete</div>'
+    +'<div style="font-size:13px;color:#9A8E7E">All activities done. Rest well!</div></div>';}
+  html+=buildDinnerCard(dateKey);
+  main.innerHTML=html;
+}
 updateClock();render();
 setInterval(updateClock,1000);
 setInterval(tickCountdown,1000);
-setInterval(render,60000);
+setInterval(function(){if(!ttMode)render();},60000);
 </script>
 </body>
 </html>
